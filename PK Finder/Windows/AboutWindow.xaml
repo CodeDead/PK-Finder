@@ -1,0 +1,42 @@
+﻿<syncfusion:ChromelessWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PK_Finder.Windows"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.AboutWindow"
+        mc:Ignorable="d" AllowsTransparency="True" Width="350" Height="250" TitleTextAlignment="Center"
+        Title="PK Finder - About" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Width="64" Height="64" Source="/PK Finder;component/Resources/Images/pkfinder.png" Stretch="None"></Image>
+            <TextBlock Grid.Column="1">
+PK Finder was created by DeadLine.<LineBreak></LineBreak>
+<LineBreak></LineBreak>
+Images: small-n-flat by paomedia<LineBreak></LineBreak>
+Theme: SyncFusion<LineBreak></LineBreak>
+Version: 1.0.0.0<LineBreak></LineBreak>
+<LineBreak></LineBreak>
+Copyright © CodeDead 2017
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Margin="5" x:Name="BtnClose" Content="Close" Click="BtnClose_OnClick"></Button>
+            <Button Margin="5"  Grid.Column="1" x:Name="BtnLicense" Content="License" Click="BtnLicense_OnClick"></Button>
+            <Button Margin="5" Grid.Column="2" x:Name="BtnCodeDead" Content="CodeDead" Click="BtnCodeDead_OnClick"></Button>
+        </Grid>
+    </Grid>
+</syncfusion:ChromelessWindow>
