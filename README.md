@@ -1,5 +1,5 @@
 # PK Finder
-Find the product key for Windows
+Find the product key for Windows using C#!
 
 # About
 PK Finder was created by DeadLine. This application was developed free of charge. It has and always will be, free of charge!
