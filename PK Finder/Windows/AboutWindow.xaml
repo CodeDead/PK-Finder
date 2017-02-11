@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PK_Finder.Windows"
-        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.AboutWindow"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.AboutWindow"
         mc:Ignorable="d" AllowsTransparency="True" Width="350" Height="250" TitleTextAlignment="Center"
         Title="PK Finder - About" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">

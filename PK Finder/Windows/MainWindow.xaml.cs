@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using PK_Finder.Classes;
 
@@ -23,14 +13,46 @@ namespace PK_Finder.Windows
     public partial class MainWindow
     {
 
+        #region Variables
         private KeyInfo _keyInfo;
+        private readonly UpdateManager _updateManager;
+        #endregion
 
         public MainWindow()
         {
+            _updateManager = new UpdateManager("http://codedead.com/Software/PK%20Finder/update.xml");
+
             InitializeComponent();
 
             LoadTheme();
             RefreshProductKey();
+
+            try
+            {
+                if (Properties.Settings.Default.AutoUpdate)
+                {
+                    CheckForUpdate(false, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Check for updates
+        /// </summary>
+        private void CheckForUpdate(bool showErrors, bool showNoUpdates)
+        {
+            try
+            {
+                _updateManager.CheckForUpdate(showErrors, showNoUpdates);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
@@ -93,6 +115,65 @@ namespace PK_Finder.Windows
         private void SettingsItem_OnClick(object sender, RoutedEventArgs e)
         {
             new SettingsWindow(this).ShowDialog();
+        }
+
+        private void BtnCopy_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(TxtProductKey.Text);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void HelpItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\help.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void UpdateItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            CheckForUpdate(true, false);
+        }
+
+        private void HomePageItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("http://codedead.com/");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LicenseItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\gpl.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void AboutItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            new AboutWindow().ShowDialog();
         }
     }
 }

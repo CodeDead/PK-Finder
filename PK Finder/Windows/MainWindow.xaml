@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:PK_Finder.Windows"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.MainWindow"
     mc:Ignorable="d"
     Title="PK Finder" Height="200" Width="450"
@@ -43,30 +42,30 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="Help">
+                <MenuItem Header="Help" Click="HelpItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/help.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Check for updates">
+                <MenuItem Header="Check for updates" Click="UpdateItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/update.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Homepage">
+                <MenuItem Header="Homepage" Click="HomePageItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/home.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="License">
+                <MenuItem Header="License" Click="LicenseItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/license.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="About">
+                <MenuItem Header="About" Click="AboutItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/about.png"></Image>
                     </MenuItem.Icon>
@@ -88,9 +87,13 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Content="Product key:" />
-                <TextBox x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True"></TextBox>
+                <Label Margin="3" Content="Product key:" />
+                <TextBox Margin="3" x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True"></TextBox>
+                <Button Margin="3" Grid.Column="2" Click="BtnCopy_OnClick">
+                    <Image Source="/PK Finder;component/Resources/Images/copy.png"></Image>
+                </Button>
             </Grid>
         </Grid>
     </Grid>

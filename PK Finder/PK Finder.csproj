@@ -74,6 +74,8 @@
     <Compile Include="Classes\KeyInfo.cs" />
     <Compile Include="Classes\KeyManager.cs" />
     <Compile Include="Classes\StyleManager.cs" />
+    <Compile Include="Classes\Update.cs" />
+    <Compile Include="Classes\UpdateManager.cs" />
     <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -150,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\copy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
