@@ -144,7 +144,7 @@ namespace PK_Finder.Windows
 
         private void UpdateItem_OnClick(object sender, RoutedEventArgs e)
         {
-            CheckForUpdate(true, false);
+            CheckForUpdate(true, true);
         }
 
         private void HomePageItem_OnClick(object sender, RoutedEventArgs e)
