@@ -89,5 +89,10 @@ namespace PK_Finder.Windows
         {
             Application.Current.Shutdown();
         }
+
+        private void SettingsItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            new SettingsWindow(this).ShowDialog();
+        }
     }
 }

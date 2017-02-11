@@ -36,7 +36,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Tools">
-                <MenuItem Header="Settings">
+                <MenuItem Header="Settings" Click="SettingsItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/settings.png"></Image>
                     </MenuItem.Icon>
