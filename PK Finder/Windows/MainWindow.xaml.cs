@@ -51,7 +51,7 @@ namespace PK_Finder.Windows
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
