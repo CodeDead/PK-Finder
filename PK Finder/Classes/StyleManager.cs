@@ -25,7 +25,7 @@ namespace PK_Finder.Classes
             catch (Exception ex)
             {
                 SkinStorage.SetVisualStyle(o, "Metro");
-                MessageBox.Show(ex.Message, "Advanced PortChecker", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

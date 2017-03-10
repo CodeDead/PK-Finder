@@ -39,6 +39,5 @@ namespace PK_Finder.Classes
             if (_productName == null || _productKey == null) throw new ArgumentException("Product name or product key is empty!");
             return _productName + Environment.NewLine + "Product key: " + _productKey;
         }
-
     }
 }
