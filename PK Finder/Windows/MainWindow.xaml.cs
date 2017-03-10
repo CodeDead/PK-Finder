@@ -15,14 +15,14 @@ namespace PK_Finder.Windows
 
         #region Variables
         private KeyInfo _keyInfo;
-        private readonly UpdateManager _updateManager;
+        private readonly UpdateManager.UpdateManager _updateManager;
         #endregion
 
         public MainWindow()
         {
-            _updateManager = new UpdateManager("http://codedead.com/Software/PK%20Finder/update.xml");
-
             InitializeComponent();
+
+            _updateManager = new UpdateManager.UpdateManager(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "http://codedead.com/Software/PK%20Finder/update.xml", "PK Finder");
 
             LoadTheme();
             RefreshProductKey();
@@ -122,7 +122,6 @@ namespace PK_Finder.Windows
             try
             {
                 Clipboard.SetText(TxtProductKey.Text);
-
             }
             catch (Exception ex)
             {

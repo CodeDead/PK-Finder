@@ -58,6 +58,9 @@
     </Reference>
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
+    <Reference Include="UpdateManager">
+      <HintPath>..\..\UpdateManager\UpdateManager\bin\Release\UpdateManager.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -70,8 +73,6 @@
     <Compile Include="Classes\KeyInfo.cs" />
     <Compile Include="Classes\KeyManager.cs" />
     <Compile Include="Classes\StyleManager.cs" />
-    <Compile Include="Classes\Update.cs" />
-    <Compile Include="Classes\UpdateManager.cs" />
     <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
