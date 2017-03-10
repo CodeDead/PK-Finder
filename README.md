@@ -8,10 +8,11 @@ You can find our company on the web here:<br />
 http://codedead.com/
 
 # Requirements for building
-* SyncFusion for WPF (https://www.syncfusion.com/)
-* .NET Framework 4.6.2 (https://www.microsoft.com/en-us/download/details.aspx?id=53344)
-* Visual Studio 2015 Update 3 or higher (http://visualstudio.com)
+* [SyncFusion for WPF](https://www.syncfusion.com/)
+* [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53344)
+* [Visual Studio](http://visualstudio.com)
 * Turn off 'Prefer 32-bit'
+* [UpdateManager](https://github.com/CodeDead/UpdateManager)
 
 # License
 This application is licensed under GPLv3.
