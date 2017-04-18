@@ -9,7 +9,7 @@ http://codedead.com/
 
 # Requirements for building
 * [SyncFusion for WPF](https://www.syncfusion.com/)
-* [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53344)
+* .NET Framework 4.7
 * [Visual Studio](http://visualstudio.com)
 * Turn off 'Prefer 32-bit'
 * [UpdateManager](https://github.com/CodeDead/UpdateManager)
