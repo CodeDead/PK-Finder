@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Win32;
 
 namespace PK_Finder.Classes
@@ -39,7 +40,7 @@ namespace PK_Finder.Classes
         /// </summary>
         /// <param name="digitalProductId">The digital product id found in the registry</param>
         /// <returns>A readable version of the digital product id</returns>
-        private static string DecodeProductKeyWin8AndUp(byte[] digitalProductId)
+        private static string DecodeProductKeyWin8AndUp(IList<byte> digitalProductId)
         {
             string key = string.Empty;
             const int keyOffset = 52;
@@ -78,7 +79,7 @@ namespace PK_Finder.Classes
         /// </summary>
         /// <param name="digitalProductId">The digital product id found in the registry</param>
         /// <returns>A readable version of the digital product id</returns>
-        private static string DecodeProductKey(byte[] digitalProductId)
+        private static string DecodeProductKey(IReadOnlyList<byte> digitalProductId)
         {
             const int keyStartIndex = 52;
             const int keyEndIndex = keyStartIndex + 15;

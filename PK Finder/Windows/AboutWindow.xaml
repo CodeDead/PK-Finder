@@ -1,11 +1,12 @@
 ﻿<syncfusion:ChromelessWindow
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.AboutWindow"
-        mc:Ignorable="d" AllowsTransparency="True" Width="350" Height="250" TitleTextAlignment="Center"
-        Title="PK Finder - About" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
+    UseLayoutRounding="True"
+    mc:Ignorable="d" AllowsTransparency="True" Width="350" Height="250" TitleTextAlignment="Center"
+    Title="PK Finder - About" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -22,7 +23,7 @@ PK Finder was created by DeadLine.<LineBreak></LineBreak>
 <LineBreak></LineBreak>
 Images: small-n-flat by paomedia<LineBreak></LineBreak>
 Theme: SyncFusion<LineBreak></LineBreak>
-Version: 1.1.0.0<LineBreak></LineBreak>
+Version: 1.2.0.0<LineBreak></LineBreak>
 <LineBreak></LineBreak>
 Copyright © CodeDead 2017
             </TextBlock>
