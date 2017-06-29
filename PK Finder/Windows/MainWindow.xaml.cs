@@ -31,27 +31,12 @@ namespace PK_Finder.Windows
             {
                 if (Properties.Settings.Default.AutoUpdate)
                 {
-                    CheckForUpdate(false, false);
+                    _updateManager.CheckForUpdate(false, false);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        /// <summary>
-        /// Check for updates
-        /// </summary>
-        private void CheckForUpdate(bool showErrors, bool showNoUpdates)
-        {
-            try
-            {
-                _updateManager.CheckForUpdate(showErrors, showNoUpdates);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -143,7 +128,7 @@ namespace PK_Finder.Windows
 
         private void UpdateItem_OnClick(object sender, RoutedEventArgs e)
         {
-            CheckForUpdate(true, true);
+            _updateManager.CheckForUpdate(true, true);
         }
 
         private void HomePageItem_OnClick(object sender, RoutedEventArgs e)
