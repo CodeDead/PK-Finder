@@ -5,7 +5,7 @@ Find the product key for Windows using C#!
 PK Finder was created by DeadLine. This application was developed free of charge. It has and always will be, free of charge!
 
 You can find our company on the web here:<br />
-http://codedead.com/
+https://codedead.com/
 
 # Requirements for building
 * [Syncfusion for WPF](https://www.syncfusion.com/)
