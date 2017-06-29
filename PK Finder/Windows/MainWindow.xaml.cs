@@ -22,7 +22,7 @@ namespace PK_Finder.Windows
         {
             InitializeComponent();
 
-            _updateManager = new UpdateManager.UpdateManager(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "http://codedead.com/Software/PK%20Finder/update.xml", "PK Finder");
+            _updateManager = new UpdateManager.UpdateManager(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", "PK Finder");
 
             LoadTheme();
             RefreshProductKey();
@@ -150,7 +150,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start("http://codedead.com/");
+                Process.Start("https://codedead.com/");
             }
             catch (Exception ex)
             {

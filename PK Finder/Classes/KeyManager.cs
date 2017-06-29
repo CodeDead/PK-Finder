@@ -22,7 +22,7 @@ namespace PK_Finder.Classes
             if (openSubKey == null) return null;
 
             byte[] digitalProductId = (byte[])openSubKey.GetValue("DigitalProductId");
-            bool isWin8OrUp = (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor >= 2) || (Environment.OSVersion.Version.Major > 6);
+            bool isWin8OrUp = Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor >= 2 || Environment.OSVersion.Version.Major > 6;
 
             string productKey = isWin8OrUp ? DecodeProductKeyWin8AndUp(digitalProductId) : DecodeProductKey(digitalProductId);
             string productName = (string)openSubKey.GetValue("ProductName");
