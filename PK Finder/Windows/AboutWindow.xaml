@@ -16,9 +16,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Image Width="64" Height="64" Source="/PK Finder;component/Resources/Images/pkfinder.png" Stretch="None"></Image>
-            <TextBlock Grid.Column="1">
+            <Separator Margin="5" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <TextBlock Grid.Column="2">
 PK Finder was created by DeadLine.<LineBreak></LineBreak>
 <LineBreak></LineBreak>
 Images: small-n-flat by paomedia<LineBreak></LineBreak>

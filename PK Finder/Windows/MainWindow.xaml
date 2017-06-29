@@ -66,6 +66,11 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
+                <MenuItem Header="Donate" Click="DonateItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/money.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem Header="About" Click="AboutItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/about.png"></Image>

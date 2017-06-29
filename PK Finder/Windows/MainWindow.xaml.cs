@@ -174,5 +174,17 @@ namespace PK_Finder.Windows
         {
             new AboutWindow().ShowDialog();
         }
+
+        private void DonateItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("https://codedead.com/?page_id=302");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
