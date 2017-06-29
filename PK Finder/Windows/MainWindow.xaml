@@ -98,6 +98,9 @@
                 <Label Margin="3" Content="Product key:" />
                 <TextBox Margin="3" x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True"></TextBox>
                 <Button Margin="3" Grid.Column="2" Click="BtnCopy_OnClick">
+                    <Button.ToolTip>
+                        <ToolTip Content="Copy product key to clipboard."></ToolTip>
+                    </Button.ToolTip>
                     <Image Source="/PK Finder;component/Resources/Images/copy.png"></Image>
                 </Button>
             </Grid>

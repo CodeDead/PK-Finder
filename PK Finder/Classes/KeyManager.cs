@@ -65,8 +65,7 @@ namespace PK_Finder.Classes
             string keypart1 = key.Substring(1, last);
             const string insert = "N";
             key = key.Substring(1).Replace(keypart1, keypart1 + insert);
-            if (last == 0)
-                key = insert + key;
+            if (last == 0) key = insert + key;
             for (int i = 5; i < key.Length; i += 6)
             {
                 key = key.Insert(i, "-");
