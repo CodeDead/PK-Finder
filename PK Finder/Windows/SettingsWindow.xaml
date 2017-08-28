@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.SettingsWindow"
     mc:Ignorable="d" TitleTextAlignment="Center" AllowsTransparency="True" UseLayoutRounding="True"
-    Title="PK Finder - Settings" Height="300" Width="350" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
+    Title="PK Finder - Settings" Height="250" Width="300" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -58,8 +58,8 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button MinHeight="25" Margin="5" x:Name="BtnReset" Content="Reset" Click="BtnReset_OnClick"></Button>
-                <Button MinHeight="25" Grid.Column="1" Margin="5" x:Name="BtnSave" Content="Save" Click="BtnSave_OnClick"></Button>
+                <Button MinHeight="20" Margin="5" x:Name="BtnReset" Content="Reset" Click="BtnReset_OnClick"></Button>
+                <Button MinHeight="20" Grid.Column="1" Margin="5" x:Name="BtnSave" Content="Save" Click="BtnSave_OnClick"></Button>
             </Grid>
         </Grid>
     </Grid>
