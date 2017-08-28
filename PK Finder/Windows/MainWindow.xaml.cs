@@ -7,17 +7,27 @@ using PK_Finder.Classes;
 
 namespace PK_Finder.Windows
 {
+    /// <inheritdoc cref="Syncfusion.Windows.Shared.ChromelessWindow" />
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow
     {
-
         #region Variables
+        /// <summary>
+        /// The KeyInfo object containing the relevant product information
+        /// </summary>
         private KeyInfo _keyInfo;
+        /// <summary>
+        /// The UpdateManager which can check for application updates
+        /// </summary>
         private readonly UpdateManager.UpdateManager _updateManager;
         #endregion
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Initialize a new MainWindow object
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -66,11 +76,21 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Refresh the product information
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void RefreshItem_OnClick(object sender, RoutedEventArgs e)
         {
             RefreshProductKey();
         }
 
+        /// <summary>
+        /// Save the product information
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void SaveItem_OnClick(object sender, RoutedEventArgs e)
         {
             if (_keyInfo == null) return;
@@ -84,7 +104,7 @@ namespace PK_Finder.Windows
                     sw.Write(_keyInfo.GetReadableString());
                 }
 
-                MessageBox.Show(this, "Information saved successfully!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(this, "Data saved successfully!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -92,16 +112,31 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Exit the application
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void ExitItem_OnClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Open a new SettingsWindow
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void SettingsItem_OnClick(object sender, RoutedEventArgs e)
         {
             new SettingsWindow(this).ShowDialog();
         }
 
+        /// <summary>
+        /// Copy the product key information to the clipboard
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnCopy_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -114,6 +149,11 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Open the help documentation for PK Finder
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void HelpItem_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -126,11 +166,21 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Check for application updates
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void UpdateItem_OnClick(object sender, RoutedEventArgs e)
         {
             _updateManager.CheckForUpdate(true, true);
         }
 
+        /// <summary>
+        /// Open the CodeDead website
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void HomePageItem_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -143,6 +193,11 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Open the license file for PK Finder
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void LicenseItem_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -155,11 +210,21 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Open a new AboutWindow
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void AboutItem_OnClick(object sender, RoutedEventArgs e)
         {
             new AboutWindow().ShowDialog();
         }
 
+        /// <summary>
+        /// Open the donation page
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void DonateItem_OnClick(object sender, RoutedEventArgs e)
         {
             try

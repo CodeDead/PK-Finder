@@ -84,7 +84,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid>
-                <Label x:Name="LblInfo" FontWeight="Bold"></Label>
+                <Label x:Name="LblInfo" FontWeight="Bold" Margin="3"></Label>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -96,7 +96,7 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label Margin="3" Content="Product key:" />
-                <TextBox Margin="3" x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True"></TextBox>
+                <TextBox Margin="3" x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True" MouseDoubleClick="BtnCopy_OnClick"></TextBox>
                 <Button Margin="3" Grid.Column="2" Click="BtnCopy_OnClick">
                     <Button.ToolTip>
                         <ToolTip Content="Copy product key to clipboard."></ToolTip>

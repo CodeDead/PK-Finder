@@ -4,14 +4,24 @@ using PK_Finder.Classes;
 
 namespace PK_Finder.Windows
 {
+    /// <inheritdoc cref="Syncfusion.Windows.Shared.ChromelessWindow" />
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
     /// </summary>
     public partial class SettingsWindow
     {
-
+        #region Variables
+        /// <summary>
+        /// The MainWindow object
+        /// </summary>
         private readonly MainWindow _mw;
+        #endregion
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Initialize a new SettingsWindow object
+        /// </summary>
+        /// <param name="mw"></param>
         public SettingsWindow(MainWindow mw)
         {
             _mw = mw;
@@ -48,6 +58,11 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Reset all settings to their default values
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnReset_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -67,6 +82,11 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Save all settings
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnSave_OnClick(object sender, RoutedEventArgs e)
         {
             try
