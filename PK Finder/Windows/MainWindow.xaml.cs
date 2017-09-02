@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using Microsoft.Win32;
 using PK_Finder.Classes;
+using Exception = System.Exception;
 
 namespace PK_Finder.Windows
 {
@@ -139,14 +140,7 @@ namespace PK_Finder.Windows
         /// <param name="e">The routed event arguments</param>
         private void BtnCopy_OnClick(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Clipboard.SetText(TxtProductKey.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            CopyData();
         }
 
         /// <summary>
@@ -230,6 +224,38 @@ namespace PK_Finder.Windows
             try
             {
                 Process.Start("https://codedead.com/?page_id=302");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void TxtProductKey_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (Properties.Settings.Default.DoubleClickCopy)
+                {
+                    CopyData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void CopyData()
+        {
+            try
+            {
+                Clipboard.SetText(TxtProductKey.Text);
+
+                if (Properties.Settings.Default.CopyMessage)
+                {
+                    MessageBox.Show("Data has been copied to the clipboard!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (Exception ex)
             {

@@ -48,6 +48,8 @@ namespace PK_Finder.Windows
             try
             {
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
+                ChbTextBoxCopy.IsChecked = Properties.Settings.Default.DoubleClickCopy;
+                ChbCopyMessage.IsChecked = Properties.Settings.Default.CopyMessage;
                 CboStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
                 IntBorderThickness.Value = Properties.Settings.Default.BorderThickness;
@@ -92,6 +94,8 @@ namespace PK_Finder.Windows
             try
             {
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
+                if (ChbTextBoxCopy.IsChecked != null) Properties.Settings.Default.DoubleClickCopy = ChbTextBoxCopy.IsChecked.Value;
+                if (ChbCopyMessage.IsChecked != null) Properties.Settings.Default.CopyMessage = ChbCopyMessage.IsChecked.Value;
                 Properties.Settings.Default.VisualStyle = CboStyle.Text;
 
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
