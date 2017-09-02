@@ -8,8 +8,7 @@
     UseLayoutRounding="True"
     Title="PK Finder" Height="200" Width="450"
     TitleTextAlignment="Center"
-    AllowsTransparency="True" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico"
-    >
+    AllowsTransparency="True" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
 
     <Grid>
         <Grid.RowDefinitions>

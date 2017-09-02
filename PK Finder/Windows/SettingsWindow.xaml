@@ -6,6 +6,7 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.SettingsWindow"
     mc:Ignorable="d" TitleTextAlignment="Center" AllowsTransparency="True" UseLayoutRounding="True"
     Title="PK Finder - Settings" Height="280" Width="320" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
