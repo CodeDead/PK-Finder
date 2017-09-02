@@ -113,6 +113,5 @@ namespace PK_Finder.Windows
                 MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
     }
 }

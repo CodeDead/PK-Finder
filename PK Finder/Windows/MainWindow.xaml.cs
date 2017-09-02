@@ -4,7 +4,6 @@ using System.IO;
 using System.Windows;
 using Microsoft.Win32;
 using PK_Finder.Classes;
-using Exception = System.Exception;
 
 namespace PK_Finder.Windows
 {
@@ -231,6 +230,11 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// If applicable, copy the product key to the clipboard
+        /// </summary>
+        /// <param name="sender">The object that has invoked this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void TxtProductKey_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             try
@@ -246,6 +250,9 @@ namespace PK_Finder.Windows
             }
         }
 
+        /// <summary>
+        /// Copy the product key to the clipboard and display a message if applicable.
+        /// </summary>
         private void CopyData()
         {
             try
@@ -254,7 +261,7 @@ namespace PK_Finder.Windows
 
                 if (Properties.Settings.Default.CopyMessage)
                 {
-                    MessageBox.Show("Data has been copied to the clipboard!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("All data has been copied to the clipboard!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)

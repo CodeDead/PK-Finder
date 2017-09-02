@@ -82,7 +82,7 @@ namespace PK_Finder.Classes
         {
             const int keyStartIndex = 52;
             const int keyEndIndex = keyStartIndex + 15;
-            char[] digits = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'R', 'T', 'V', 'W', 'X', 'Y', '2', '3', '4', '6', '7', '8', '9' };
+            char[] digits = { 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'R', 'T', 'V', 'W', 'X', 'Y', '2', '3', '4', '6', '7', '8', '9' };
             const int decodeLength = 29;
             const int decodeStringLength = 15;
             char[] decodedChars = new char[decodeLength];
