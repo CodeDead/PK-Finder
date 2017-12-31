@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\ExportManager.cs" />
     <Compile Include="Classes\KeyInfo.cs" />
     <Compile Include="Classes\KeyManager.cs" />
     <Compile Include="Classes\StyleManager.cs" />

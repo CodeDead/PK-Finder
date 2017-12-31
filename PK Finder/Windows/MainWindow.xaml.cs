@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using Microsoft.Win32;
 using PK_Finder.Classes;
@@ -95,20 +94,29 @@ namespace PK_Finder.Windows
         {
             if (_keyInfo == null) return;
 
-            SaveFileDialog sfd = new SaveFileDialog { Filter = "Text file (*.txt)|*.txt" };
+            SaveFileDialog sfd = new SaveFileDialog { Filter = "Text file (*.txt)|*.txt|CSV (*.csv)|*.csv|HTML (*.html)|*.html" };
+            ExportManager exportManager = new ExportManager(_keyInfo);
+
             if (sfd.ShowDialog() != true) return;
             try
             {
-                using (StreamWriter sw = new StreamWriter(sfd.FileName))
+                switch (sfd.FilterIndex)
                 {
-                    sw.Write(_keyInfo.GetReadableString());
+                    default:
+                        exportManager.ExportToTxt(sfd.FileName);
+                        break;
+                    case 2:
+                        exportManager.ExportToCsv(sfd.FileName);
+                        break;
+                    case 3:
+                        exportManager.ExportToHtml(sfd.FileName);
+                        break;
                 }
-
-                MessageBox.Show(this, "Data saved successfully!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Key exported!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

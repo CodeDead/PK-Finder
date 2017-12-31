@@ -100,7 +100,7 @@
                     <Button.ToolTip>
                         <ToolTip Content="Copy product key to clipboard."></ToolTip>
                     </Button.ToolTip>
-                    <Image Source="/PK Finder;component/Resources/Images/copy.png"></Image>
+                    <Image Source="/PK Finder;component/Resources/Images/copy.png" StretchDirection="DownOnly"></Image>
                 </Button>
             </Grid>
         </Grid>
