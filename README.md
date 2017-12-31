@@ -15,4 +15,4 @@ https://codedead.com/
 * [UpdateManager](https://github.com/CodeDead/UpdateManager)
 
 # License
-This application is licensed under GPLv3.
+This application is licensed under [GPLv3](https://codedead.com/Software/PK%20Finder/gpl.pdf).
