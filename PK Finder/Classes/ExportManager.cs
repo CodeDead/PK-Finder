@@ -23,16 +23,26 @@ namespace PK_Finder.Classes
         }
 
         /// <summary>
+        /// Export data to a specific location
+        /// </summary>
+        /// <param name="path">The path where the data should be stored</param>
+        /// <param name="content">The content that should be stored in the file</param>
+        private static void Export(string path, string content)
+        {
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                sw.Write(content);
+            }
+        }
+
+        /// <summary>
         /// Export the KeyInfo object to a storage device in plain text format
         /// </summary>
         /// <param name="path">The path where the KeyInfo object can be stored in plain text format</param>
         internal void ExportToTxt(string path)
         {
-            using (StreamWriter sw = new StreamWriter(path))
-            {
-                sw.WriteLine("Product name: " + _keyInfo.GetProductName());
-                sw.WriteLine("Product key: " + _keyInfo.GetProductKey());
-            }
+            string content = "Product name: " + _keyInfo.GetProductName() + Environment.NewLine + "Product key: " + _keyInfo.GetProductKey();
+            Export(path, content);
         }
 
         /// <summary>
@@ -41,11 +51,23 @@ namespace PK_Finder.Classes
         /// <param name="path">The path where the KeyInfo object can be stored in CSV format</param>
         internal void ExportToCsv(string path)
         {
-            using (StreamWriter sw = new StreamWriter(path))
-            {
-                sw.WriteLine("Product name,Product key");
-                sw.WriteLine(_keyInfo.GetProductName() + "," + _keyInfo.GetProductKey());
-            }
+            ExportDelimiter(path, ",");
+        }
+
+        internal void ExportToExcel(string path)
+        {
+            ExportDelimiter(path, ";");
+        }
+
+        /// <summary>
+        /// Export the KeyInfo objecty to a storage device using a specific delimiter character
+        /// </summary>
+        /// <param name="path">The path where the KeyInfo object can be stored</param>
+        /// <param name="delimiter">The delimiter that should be used to split the data</param>
+        private void ExportDelimiter(string path, string delimiter)
+        {
+            string content = "Product name" + delimiter + "Product key" + Environment.NewLine + _keyInfo.GetProductName() + delimiter + _keyInfo.GetProductKey();
+            Export(path, content);
         }
 
         /// <summary>
@@ -54,18 +76,8 @@ namespace PK_Finder.Classes
         /// <param name="path">The path where the KeyInfo object can be stored in HTML format</param>
         internal void ExportToHtml(string path)
         {
-            using (StreamWriter sw = new StreamWriter(path))
-            {
-                sw.WriteLine("<html>");
-                sw.WriteLine("<head><title>PK Finder</title></head>");
-                sw.WriteLine("<body>");
-                sw.WriteLine("<table border='1'>");
-                sw.WriteLine("<tr><th>Product name</th><th>Product key</th></tr>");
-                sw.WriteLine("<tr><td>" + _keyInfo.GetProductName() + "</td><td>" + _keyInfo.GetProductKey() + "</td></tr>");
-                sw.WriteLine("</table>");
-                sw.WriteLine("</body>");
-                sw.WriteLine("</html>");
-            }
+            string content = "<html><head><title>PK Finder</title></head><body><table border='1'><tr><th>Product name</th><th>Product key</th></tr><tr><td>" + _keyInfo.GetProductName() + "</td><td>" + _keyInfo.GetProductKey() + "</td></tr></table></body></html>";
+            Export(path, content);
         }
     }
 }

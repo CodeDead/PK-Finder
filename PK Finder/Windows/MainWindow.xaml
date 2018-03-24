@@ -12,8 +12,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Menu IsMainMenu="True">
             <MenuItem Header="File">
@@ -24,63 +24,63 @@
                 </MenuItem>
                 <MenuItem Header="Save" Click="SaveItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/save.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/save.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Exit" Click="ExitItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/exit.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/exit.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Tools">
                 <MenuItem Header="Settings" Click="SettingsItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/settings.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/settings.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Help" Click="HelpItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/help.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/help.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Check for updates" Click="UpdateItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/update.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/update.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Homepage" Click="HomePageItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/home.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/home.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="License" Click="LicenseItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/license.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/license.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Donate" Click="DonateItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/money.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/money.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="About" Click="AboutItem_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/about.png"></Image>
+                        <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/about.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid>
                 <Label x:Name="LblInfo" FontWeight="Bold" Margin="3"></Label>
@@ -90,17 +90,17 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Label Margin="2" Content="Product key:" />
                 <TextBox Margin="2" x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True" MouseDoubleClick="TxtProductKey_MouseDoubleClick"></TextBox>
                 <Button Margin="2" Grid.Column="2" Click="BtnCopy_OnClick">
                     <Button.ToolTip>
-                        <ToolTip Content="Copy product key to clipboard."></ToolTip>
+                        <ToolTip Content="Copy product key to clipboard." />
                     </Button.ToolTip>
-                    <Image Source="/PK Finder;component/Resources/Images/copy.png" StretchDirection="DownOnly"></Image>
+                    <Image Source="/PK Finder;component/Resources/Images/copy.png" StretchDirection="DownOnly" />
                 </Button>
             </Grid>
         </Grid>

@@ -20,7 +20,7 @@ namespace PK_Finder.Windows
         /// <summary>
         /// The UpdateManager which can check for application updates
         /// </summary>
-        private readonly UpdateManager.UpdateManager _updateManager;
+        private readonly UpdateManager.Classes.UpdateManager _updateManager;
         #endregion
 
         /// <inheritdoc />
@@ -31,7 +31,7 @@ namespace PK_Finder.Windows
         {
             InitializeComponent();
 
-            _updateManager = new UpdateManager.UpdateManager(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", "PK Finder");
+            _updateManager = new UpdateManager.Classes.UpdateManager(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", "PK Finder", "Information", "Cancel", "Download", "You are using the latest version of PK Finder!");
 
             LoadTheme();
             RefreshProductKey();
@@ -94,7 +94,7 @@ namespace PK_Finder.Windows
         {
             if (_keyInfo == null) return;
 
-            SaveFileDialog sfd = new SaveFileDialog { Filter = "Text file (*.txt)|*.txt|CSV (*.csv)|*.csv|HTML (*.html)|*.html" };
+            SaveFileDialog sfd = new SaveFileDialog { Filter = "Text file (*.txt)|*.txt|HTML (*.html)|*.html|CSV (*.csv)|*.csv|Excel (.csv)|*.csv" };
             ExportManager exportManager = new ExportManager(_keyInfo);
 
             if (sfd.ShowDialog() != true) return;
@@ -106,10 +106,13 @@ namespace PK_Finder.Windows
                         exportManager.ExportToTxt(sfd.FileName);
                         break;
                     case 2:
-                        exportManager.ExportToCsv(sfd.FileName);
+                        exportManager.ExportToHtml(sfd.FileName);
                         break;
                     case 3:
-                        exportManager.ExportToHtml(sfd.FileName);
+                        exportManager.ExportToCsv(sfd.FileName);
+                        break;
+                    case 4:
+                        exportManager.ExportToExcel(sfd.FileName);
                         break;
                 }
                 MessageBox.Show("Key exported!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);

@@ -13,6 +13,7 @@ https://codedead.com/
 * [Visual Studio](http://visualstudio.com)
 * Turn off 'Prefer 32-bit'
 * [UpdateManager](https://github.com/CodeDead/UpdateManager)
+* [Resharper](https://jetbrains.com/resharper) (Optional. We just really like resharper)
 
 # License
 This application is licensed under [GPLv3](https://codedead.com/Software/PK%20Finder/gpl.pdf).

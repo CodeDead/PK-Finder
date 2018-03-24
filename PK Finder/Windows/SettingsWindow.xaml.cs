@@ -53,6 +53,8 @@ namespace PK_Finder.Windows
                 CboStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
                 IntBorderThickness.Value = Properties.Settings.Default.BorderThickness;
+                SldOpacity.Value = Properties.Settings.Default.WindowOpacity * 100;
+                SldWindowResize.Value = Properties.Settings.Default.WindowResizeBorder;
             }
             catch (Exception ex)
             {
@@ -70,6 +72,7 @@ namespace PK_Finder.Windows
             try
             {
                 if (MessageBox.Show(this, "Are you sure that you want to reset all settings?", "PK Finder", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+
                 Properties.Settings.Default.Reset();
                 Properties.Settings.Default.Save();
 
@@ -100,6 +103,8 @@ namespace PK_Finder.Windows
 
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
                 if (IntBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int)IntBorderThickness.Value;
+                Properties.Settings.Default.WindowOpacity = SldOpacity.Value / 100;
+                Properties.Settings.Default.WindowResizeBorder = SldWindowResize.Value;
 
                 Properties.Settings.Default.Save();
 
@@ -112,6 +117,26 @@ namespace PK_Finder.Windows
             {
                 MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        /// <summary>
+        /// Method that is called when the opacity should change dynamically
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
+        private void SldOpacity_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Opacity = SldOpacity.Value / 100;
+        }
+
+        /// <summary>
+        /// Method  that is called when the ResizeBorderThickness should change dynamically
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
+        private void SldWindowResize_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ResizeBorderThickness = new Thickness(SldWindowResize.Value);
         }
     }
 }
