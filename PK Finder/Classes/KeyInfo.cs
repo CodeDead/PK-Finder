@@ -5,6 +5,7 @@
     /// </summary>
     internal sealed class KeyInfo
     {
+        #region Variables
         /// <summary>
         /// The product name
         /// </summary>
@@ -13,6 +14,7 @@
         /// The product key
         /// </summary>
         private string _productKey;
+        #endregion
 
         /// <summary>
         /// Initialize a new KeyInfo object

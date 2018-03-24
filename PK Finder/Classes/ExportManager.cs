@@ -8,10 +8,12 @@ namespace PK_Finder.Classes
     /// </summary>
     internal sealed class ExportManager
     {
+        #region Variables
         /// <summary>
         /// The KeyInfo object that can be used by the internal methods for writing information to a storage device
         /// </summary>
         private readonly KeyInfo _keyInfo;
+        #endregion
 
         /// <summary>
         /// Initialize a new ExportManager object

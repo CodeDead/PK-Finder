@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Input;
 using Microsoft.Win32;
 using PK_Finder.Classes;
 
@@ -34,6 +35,8 @@ namespace PK_Finder.Windows
             _updateManager = new UpdateManager.Classes.UpdateManager(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", "PK Finder", "Information", "Cancel", "Download", "You are using the latest version of PK Finder!");
 
             LoadTheme();
+            WindowDraggable();
+
             RefreshProductKey();
 
             try
@@ -58,6 +61,43 @@ namespace PK_Finder.Windows
         }
 
         /// <summary>
+        /// Check whether the Window should be draggable or not
+        /// </summary>
+        internal void WindowDraggable()
+        {
+            try
+            {
+                if (Properties.Settings.Default.WindowDraggable)
+                {
+                    // Delete event handler first to prevent duplicate handlers
+                    MouseDown -= OnMouseDown;
+                    MouseDown += OnMouseDown;
+                }
+                else
+                {
+                    MouseDown -= OnMouseDown;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Method that is called when the Window should be dragged
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The MouseButtonEventArgs</param>
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        /// <summary>
         /// Refresh the controls to display the current product key and corresponding information
         /// </summary>
         private void RefreshProductKey()
@@ -79,18 +119,18 @@ namespace PK_Finder.Windows
         /// Refresh the product information
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void RefreshItem_OnClick(object sender, RoutedEventArgs e)
         {
             RefreshProductKey();
         }
 
         /// <summary>
-        /// Save the product information
+        /// Export the product information
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void SaveItem_OnClick(object sender, RoutedEventArgs e)
+        /// <param name="e">The RoutedEventArgs</param>
+        private void ExportItem_OnClick(object sender, RoutedEventArgs e)
         {
             if (_keyInfo == null) return;
 
@@ -127,7 +167,7 @@ namespace PK_Finder.Windows
         /// Exit the application
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void ExitItem_OnClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -137,7 +177,7 @@ namespace PK_Finder.Windows
         /// Open a new SettingsWindow
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void SettingsItem_OnClick(object sender, RoutedEventArgs e)
         {
             new SettingsWindow(this).ShowDialog();
@@ -157,7 +197,7 @@ namespace PK_Finder.Windows
         /// Open the help documentation for PK Finder
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void HelpItem_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -174,7 +214,7 @@ namespace PK_Finder.Windows
         /// Check for application updates
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void UpdateItem_OnClick(object sender, RoutedEventArgs e)
         {
             _updateManager.CheckForUpdate(true, true);
@@ -184,7 +224,7 @@ namespace PK_Finder.Windows
         /// Open the CodeDead website
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void HomePageItem_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -201,7 +241,7 @@ namespace PK_Finder.Windows
         /// Open the license file for PK Finder
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void LicenseItem_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -218,7 +258,7 @@ namespace PK_Finder.Windows
         /// Open a new AboutWindow
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void AboutItem_OnClick(object sender, RoutedEventArgs e)
         {
             new AboutWindow().ShowDialog();
@@ -228,7 +268,7 @@ namespace PK_Finder.Windows
         /// Open the donation page
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void DonateItem_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -245,8 +285,8 @@ namespace PK_Finder.Windows
         /// If applicable, copy the product key to the clipboard
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void TxtProductKey_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        /// <param name="e">The RoutedEventArgs</param>
+        private void TxtProductKey_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
             {

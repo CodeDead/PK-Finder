@@ -118,5 +118,29 @@ namespace PK_Finder.Properties {
                 this["WindowResizeBorder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WindowDrag {
+            get {
+                return ((string)(this["WindowDrag"]));
+            }
+            set {
+                this["WindowDrag"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WindowDraggable {
+            get {
+                return ((bool)(this["WindowDraggable"]));
+            }
+            set {
+                this["WindowDraggable"] = value;
+            }
+        }
     }
 }

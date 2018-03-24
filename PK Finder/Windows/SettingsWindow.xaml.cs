@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using PK_Finder.Classes;
 
 namespace PK_Finder.Windows
@@ -50,11 +51,23 @@ namespace PK_Finder.Windows
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
                 ChbTextBoxCopy.IsChecked = Properties.Settings.Default.DoubleClickCopy;
                 ChbCopyMessage.IsChecked = Properties.Settings.Default.CopyMessage;
+                ChbWindowDrag.IsChecked = Properties.Settings.Default.WindowDraggable;
                 CboStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
                 IntBorderThickness.Value = Properties.Settings.Default.BorderThickness;
                 SldOpacity.Value = Properties.Settings.Default.WindowOpacity * 100;
                 SldWindowResize.Value = Properties.Settings.Default.WindowResizeBorder;
+
+                if (Properties.Settings.Default.WindowDraggable)
+                {
+                    // Prevent duplicate handlers
+                    MouseDown -= OnMouseDown;
+                    MouseDown += OnMouseDown;
+                }
+                else
+                {
+                    MouseDown -= OnMouseDown;
+                }
             }
             catch (Exception ex)
             {
@@ -63,10 +76,23 @@ namespace PK_Finder.Windows
         }
 
         /// <summary>
+        /// Method that is called when the Window should be dragged
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The MouseButtonEventArgs</param>
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        /// <summary>
         /// Reset all settings to their default values
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void BtnReset_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -79,7 +105,10 @@ namespace PK_Finder.Windows
                 LoadSettings();
 
                 _mw.LoadTheme();
+                _mw.WindowDraggable();
+                
                 LoadTheme();
+                LoadSettings();
             }
             catch (Exception ex)
             {
@@ -91,7 +120,7 @@ namespace PK_Finder.Windows
         /// Save all settings
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
-        /// <param name="e">The routed event arguments</param>
+        /// <param name="e">The RoutedEventArgs</param>
         private void BtnSave_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -99,6 +128,7 @@ namespace PK_Finder.Windows
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
                 if (ChbTextBoxCopy.IsChecked != null) Properties.Settings.Default.DoubleClickCopy = ChbTextBoxCopy.IsChecked.Value;
                 if (ChbCopyMessage.IsChecked != null) Properties.Settings.Default.CopyMessage = ChbCopyMessage.IsChecked.Value;
+                if (ChbWindowDrag.IsChecked != null) Properties.Settings.Default.WindowDraggable = ChbWindowDrag.IsChecked.Value;
                 Properties.Settings.Default.VisualStyle = CboStyle.Text;
 
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
@@ -109,7 +139,10 @@ namespace PK_Finder.Windows
                 Properties.Settings.Default.Save();
 
                 _mw.LoadTheme();
+                _mw.WindowDraggable();
+
                 LoadTheme();
+                LoadSettings();
 
                 MessageBox.Show(this, "All settings have been saved!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
             }

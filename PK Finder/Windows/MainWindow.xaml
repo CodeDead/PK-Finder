@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.MainWindow"
     mc:Ignorable="d"
-    UseLayoutRounding="True"
+    UseLayoutRounding="True" UseNativeChrome="True"
     Title="PK Finder" Height="200" Width="450"
     TitleTextAlignment="Center"
     AllowsTransparency="True" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
@@ -22,7 +22,7 @@
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/refresh.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Save" Click="SaveItem_OnClick">
+                <MenuItem Header="Export" Click="ExportItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/save.png" />
                     </MenuItem.Icon>

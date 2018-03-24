@@ -26,5 +26,11 @@
     <Setting Name="WindowResizeBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
+    <Setting Name="WindowDrag" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WindowDraggable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

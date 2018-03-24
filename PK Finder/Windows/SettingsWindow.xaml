@@ -4,7 +4,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.SettingsWindow"
-    mc:Ignorable="d" TitleTextAlignment="Center" AllowsTransparency="True" UseLayoutRounding="True"
+    mc:Ignorable="d" TitleTextAlignment="Center" AllowsTransparency="True"
+    UseLayoutRounding="True" UseNativeChrome="True"
     Title="PK Finder - Settings" Height="300" Width="350" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
     
     <Grid>
@@ -20,10 +21,12 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
+                    <CheckBox Grid.Row="0" Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
                     <CheckBox Grid.Row="1" Margin="3" x:Name="ChbTextBoxCopy" Content="Copy data by double clicking" />
                     <CheckBox Grid.Row="2" Margin="3" x:Name="ChbCopyMessage" Content="Display message when data has been copied" />
+                    <CheckBox Grid.Row="3" Margin="3" x:Name="ChbWindowDrag" Content="Window draggable" />
                 </Grid>
             </TabItem>
             <TabItem Header="Theme" >
