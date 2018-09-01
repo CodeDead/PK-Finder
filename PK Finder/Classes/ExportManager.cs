@@ -56,13 +56,17 @@ namespace PK_Finder.Classes
             ExportDelimiter(path, ",");
         }
 
+        /// <summary>
+        /// Export the KeyInfo object to a storage device in CSV format using the Excel delimiter
+        /// </summary>
+        /// <param name="path">The path where the KeyInfo object can be stored in CSV format using the Excel delimiter</param>
         internal void ExportToExcel(string path)
         {
             ExportDelimiter(path, ";");
         }
 
         /// <summary>
-        /// Export the KeyInfo objecty to a storage device using a specific delimiter character
+        /// Export the KeyInfo object to a storage device using a specific delimiter character
         /// </summary>
         /// <param name="path">The path where the KeyInfo object can be stored</param>
         /// <param name="delimiter">The delimiter that should be used to split the data</param>

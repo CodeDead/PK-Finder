@@ -323,7 +323,7 @@ namespace PK_Finder.Windows
 
                 if (Properties.Settings.Default.CopyMessage)
                 {
-                    MessageBox.Show("All data has been copied to the clipboard!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Product key has been copied to the clipboard!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)

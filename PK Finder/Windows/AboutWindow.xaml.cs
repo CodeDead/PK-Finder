@@ -19,23 +19,10 @@ namespace PK_Finder.Windows
         public AboutWindow()
         {
             InitializeComponent();
-            LoadTheme();
-            WindowDraggable();
-        }
-
-        /// <summary>
-        /// Load the theme of this object
-        /// </summary>
-        private void LoadTheme()
-        {
+            // Change the theme of the Window
             StyleManager.ChangeStyle(this);
-        }
 
-        /// <summary>
-        /// Check whether the Window should be draggable or not
-        /// </summary>
-        private void WindowDraggable()
-        {
+            // Enable window dragging, if the setting is enabled
             try
             {
                 if (Properties.Settings.Default.WindowDraggable)
