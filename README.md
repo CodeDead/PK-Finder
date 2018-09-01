@@ -8,8 +8,8 @@ You can find our company on the web here:<br />
 https://codedead.com/
 
 # Requirements for building
-* [Syncfusion for WPF](https://www.syncfusion.com/)
-* [.NET Framework 4.7.1](https://www.microsoft.com/en-us/download/details.aspx?id=56116)
+* [Syncfusion for WPF](https://www.syncfusion.com/) (Community edition available)
+* [.NET Framework 4.7.2](https://www.microsoft.com/net/download/dotnet-framework-runtime)
 * [Visual Studio](http://visualstudio.com)
 * Turn off 'Prefer 32-bit'
 * [UpdateManager](https://github.com/CodeDead/UpdateManager)

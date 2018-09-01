@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 using PK_Finder.Classes;
+using UpdateManager.Classes;
 
 namespace PK_Finder.Windows
 {
@@ -32,7 +34,16 @@ namespace PK_Finder.Windows
         {
             InitializeComponent();
 
-            _updateManager = new UpdateManager.Classes.UpdateManager(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", "PK Finder", "Information", "Cancel", "Download", "You are using the latest version of PK Finder!");
+            StringVariables stringVariables = new StringVariables
+            {
+                CancelButtonText = "Cancel",
+                DownloadButtonText = "Download",
+                InformationButtonText = "Information",
+                NoNewVersionText = "You are running the latest version!",
+                TitleText = "PK Finder",
+                UpdateNowText = "Would you like to update the application now?"
+            };
+            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", stringVariables);
 
             LoadTheme();
             WindowDraggable();
