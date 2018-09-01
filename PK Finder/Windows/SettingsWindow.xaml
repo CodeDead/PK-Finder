@@ -14,8 +14,12 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TabControl>
-            <TabItem Header="General" >
+        <syncfusion:TabControlExt CloseButtonType="Hide" EnableLabelEdit="False"
+                                  AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden"
+                                  TabItemSize="ShrinkToFit" TabScrollButtonVisibility="Hidden">
+            <syncfusion:TabItemExt Header="General" Image="/PK Finder;component/Resources/Images/settings.png"
+                                   ImageWidth="16" ImageHeight="16">
+
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -28,8 +32,10 @@
                     <CheckBox Grid.Row="2" Margin="3" x:Name="ChbCopyMessage" Content="Display message when data has been copied" />
                     <CheckBox Grid.Row="3" Margin="3" x:Name="ChbWindowDrag" Content="Window draggable" />
                 </Grid>
-            </TabItem>
-            <TabItem Header="Theme" >
+            </syncfusion:TabItemExt>
+
+            <syncfusion:TabItemExt Header="Theme" Image="/PK Finder;component/Resources/Images/home.png"
+                                   ImageWidth="16" ImageHeight="16">
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -69,8 +75,8 @@
                     <Label Margin="3" Grid.Row="4" Grid.Column="0" Content="Resize border:" />
                     <Slider x:Name="SldWindowResize" Margin="3" Grid.Row="4" Grid.Column="1" Minimum="2" Maximum="10" Width="180" ValueChanged="SldWindowResize_OnValueChanged" />
                 </Grid>
-            </TabItem>
-        </TabControl>
+            </syncfusion:TabItemExt>
+        </syncfusion:TabControlExt>
 
         <Grid Grid.Row="1">
             <Grid>
