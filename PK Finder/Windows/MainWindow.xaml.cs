@@ -117,6 +117,12 @@ namespace PK_Finder.Windows
             {
                 _keyInfo = KeyManager.GetWindowsProductInformation();
 
+                if (_keyInfo == null)
+                {
+                    MessageBox.Show("Unable to retrieve product key! Your registry might be corrupt or your version of Windows is not activated.", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 LblInfo.Content = _keyInfo.GetProductName();
                 TxtProductKey.Text = _keyInfo.GetProductKey();
             }

@@ -95,7 +95,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Label Margin="2" Content="Product key:" />
-                <TextBox Margin="2" x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True" MouseDoubleClick="TxtProductKey_MouseDoubleClick"></TextBox>
+                <TextBox Margin="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True" MouseDoubleClick="TxtProductKey_MouseDoubleClick"></TextBox>
                 <Button Margin="2" Grid.Column="2" Click="BtnCopy_OnClick">
                     <Button.ToolTip>
                         <ToolTip Content="Copy product key to clipboard." />

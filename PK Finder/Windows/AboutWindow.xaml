@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.AboutWindow"
     UseLayoutRounding="True" UseNativeChrome="True"
-    mc:Ignorable="d" AllowsTransparency="True" Width="300" Height="200" TitleTextAlignment="Center"
+    mc:Ignorable="d" AllowsTransparency="True" Width="350" Height="250" TitleTextAlignment="Center"
     Title="PK Finder - About" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
     
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -26,9 +26,9 @@ PK Finder was created by DeadLine.<LineBreak></LineBreak>
 <LineBreak></LineBreak>
 Images: small-n-flat by paomedia<LineBreak></LineBreak>
 Theme: Syncfusion<LineBreak></LineBreak>
-Version: 1.5.0.0<LineBreak></LineBreak>
+Version: 1.5.1.0<LineBreak></LineBreak>
 <LineBreak></LineBreak>
-Copyright © CodeDead 2018
+Copyright © CodeDead 2019
             </TextBlock>
         </Grid>
         <Grid Grid.Row="1">

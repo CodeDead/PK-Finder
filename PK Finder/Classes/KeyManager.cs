@@ -48,6 +48,8 @@ namespace PK_Finder.Classes
             digitalProductId[66] = (byte)((digitalProductId[66] & 0xf7) | (isWin8 & 2) * 4);
 
             const string digits = "BCDFGHJKMPQRTVWXY2346789";
+            const string insert = "N";
+
             int last = 0;
             for (int i = 24; i >= 0; i--)
             {
@@ -63,7 +65,6 @@ namespace PK_Finder.Classes
                 key = digits[current] + key;
             }
             string keyPart = key.Substring(1, last);
-            const string insert = "N";
             key = key.Substring(1).Replace(keyPart, keyPart + insert);
             if (last == 0) key = insert + key;
             for (int i = 5; i < key.Length; i += 6)

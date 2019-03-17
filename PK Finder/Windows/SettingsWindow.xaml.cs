@@ -1,7 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using PK_Finder.Classes;
+using Syncfusion.Windows.Shared;
 
 namespace PK_Finder.Windows
 {
@@ -48,16 +51,6 @@ namespace PK_Finder.Windows
         {
             try
             {
-                ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
-                ChbTextBoxCopy.IsChecked = Properties.Settings.Default.DoubleClickCopy;
-                ChbCopyMessage.IsChecked = Properties.Settings.Default.CopyMessage;
-                ChbWindowDrag.IsChecked = Properties.Settings.Default.WindowDraggable;
-                CboStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
-                CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
-                IntBorderThickness.Value = Properties.Settings.Default.BorderThickness;
-                SldOpacity.Value = Properties.Settings.Default.WindowOpacity * 100;
-                SldWindowResize.Value = Properties.Settings.Default.WindowResizeBorder;
-
                 if (Properties.Settings.Default.WindowDraggable)
                 {
                     // Prevent duplicate handlers
@@ -125,17 +118,6 @@ namespace PK_Finder.Windows
         {
             try
             {
-                if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
-                if (ChbTextBoxCopy.IsChecked != null) Properties.Settings.Default.DoubleClickCopy = ChbTextBoxCopy.IsChecked.Value;
-                if (ChbCopyMessage.IsChecked != null) Properties.Settings.Default.CopyMessage = ChbCopyMessage.IsChecked.Value;
-                if (ChbWindowDrag.IsChecked != null) Properties.Settings.Default.WindowDraggable = ChbWindowDrag.IsChecked.Value;
-                Properties.Settings.Default.VisualStyle = CboStyle.Text;
-
-                Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
-                if (IntBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int)IntBorderThickness.Value;
-                Properties.Settings.Default.WindowOpacity = SldOpacity.Value / 100;
-                Properties.Settings.Default.WindowResizeBorder = SldWindowResize.Value;
-
                 Properties.Settings.Default.Save();
 
                 _mw.LoadTheme();
@@ -159,7 +141,7 @@ namespace PK_Finder.Windows
         /// <param name="e">The RoutedPropertyChangedEventArgs</param>
         private void SldOpacity_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Opacity = SldOpacity.Value / 100;
+            Opacity = ((Slider)sender).Value / 100;
         }
 
         /// <summary>
@@ -169,7 +151,35 @@ namespace PK_Finder.Windows
         /// <param name="e">The RoutedPropertyChangedEventArgs</param>
         private void SldWindowResize_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            ResizeBorderThickness = new Thickness(SldWindowResize.Value);
+            ResizeBorderThickness = new Thickness(((Slider)sender).Value);
+        }
+
+        /// <summary>
+        /// Method that is called when the Window is closing
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The CancelEventArgs</param>
+        private void SettingsWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.Reload();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Method that is called when the BorderThickness should change dynamically
+        /// </summary>
+        /// <param name="d">The DependencyObject</param>
+        /// <param name="e">The DependencyPropertyChangedEventArgs</param>
+        private void BorderThickness_OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            long? value = ((IntegerTextBox) d).Value;
+            if (value != null) BorderThickness = new Thickness(value.Value);
         }
     }
 }

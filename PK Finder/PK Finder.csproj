@@ -73,6 +73,7 @@
     <Compile Include="Classes\ExportManager.cs" />
     <Compile Include="Classes\KeyInfo.cs" />
     <Compile Include="Classes\KeyManager.cs" />
+    <Compile Include="Classes\SettingsBinder.cs" />
     <Compile Include="Classes\StyleManager.cs" />
     <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
