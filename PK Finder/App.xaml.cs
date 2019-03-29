@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace PK_Finder
+﻿namespace PK_Finder
 {
+    /// <inheritdoc />
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
+        /// <inheritdoc />
+        /// <summary>
+        /// Initialize a new App
+        /// </summary>
+        public App()
+        {
+            // Enter your Syncfusion license key here
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR LICENSE KEY HERE");
+        }
     }
 }
