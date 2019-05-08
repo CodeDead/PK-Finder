@@ -50,7 +50,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Margin="3" Content="Style:" />
-                    <ComboBox Margin="3" SelectedValuePath="Content" SelectedValue="{bind:SettingsBinder VisualStyle}" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
+                    <ComboBox Margin="3" SelectedValuePath="Content" SelectedValue="{bind:SettingsBinder VisualStyle}" Grid.Row="0" Grid.Column="1" IsReadOnly="True" SelectionChanged="Selector_OnSelectionChanged">
                         <ComboBoxItem Content="Metro" />
                         <ComboBoxItem Content="Blend" />
                         <ComboBoxItem Content="VS2010" />

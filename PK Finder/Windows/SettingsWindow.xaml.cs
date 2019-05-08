@@ -171,6 +171,16 @@ namespace PK_Finder.Windows
         }
 
         /// <summary>
+        /// Method that is called when the theme is changed
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The SelectionChangedEventArgs</param>
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadTheme();
+        }
+
+        /// <summary>
         /// Method that is called when the Window is closing
         /// </summary>
         /// <param name="sender">The object that called this method</param>
