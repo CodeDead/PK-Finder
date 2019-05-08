@@ -1,18 +1,19 @@
 # PK Finder
-Find the product key for Windows using C#!
+![PK Finder](https://codedead.com/wp-content/uploads/2017/02/pkfinder.png)
 
-# About
-PK Finder was created by DeadLine. This application was developed free of charge. It has and always will be, free of charge!
+Find your windows product key, using C#!
 
-You can find our company on the web here:<br />
-https://codedead.com/
-
-# Requirements for building
+## Dependencies
 * [Syncfusion for WPF](https://www.syncfusion.com/) ([Community edition available](https://www.syncfusion.com/products/communitylicense))
 * [UpdateManager](https://github.com/CodeDead/UpdateManager)
-* [.NET Framework 4.7.2](https://www.microsoft.com/net/download/dotnet-framework-runtime)
+* [.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 * Turn off 'Prefer 32-bit'
-* [Resharper](https://jetbrains.com/resharper) (Optional. We just really like resharper)
 
-# License
-This application is licensed under [GPLv3](https://codedead.com/Software/PK%20Finder/gpl.pdf).
+# About
+This library is maintained by CodeDead. You can find more about us using the following links:
+* [Website](https://codedead.com)
+* [Twitter](https://twitter.com/C0DEDEAD)
+* [Facebook](https://facebook.com/deadlinecodedead)
+* [Reddit](https://reddit.com/r/CodeDead/)
+
+We would also like to thank JetBrains for the open source license that they granted us to work with wonderful tools such as [Rider](https://jetbrains.com/rider) and [Resharper](https://jetbrains.com/resharper).

@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
+using CodeDead.UpdateManager.Classes;
 using Microsoft.Win32;
 using PK_Finder.Classes;
-using UpdateManager.Classes;
 
 namespace PK_Finder.Windows
 {
@@ -23,7 +23,7 @@ namespace PK_Finder.Windows
         /// <summary>
         /// The UpdateManager which can check for application updates
         /// </summary>
-        private readonly UpdateManager.Classes.UpdateManager _updateManager;
+        private readonly UpdateManager _updateManager;
         #endregion
 
         /// <inheritdoc />
@@ -43,7 +43,7 @@ namespace PK_Finder.Windows
                 TitleText = "PK Finder",
                 UpdateNowText = "Would you like to update the application now?"
             };
-            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", stringVariables);
+            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", stringVariables);
 
             LoadTheme();
             WindowDraggable();

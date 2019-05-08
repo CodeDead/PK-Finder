@@ -48,35 +48,35 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <Label Margin="3" Content="Style:" />
                     <ComboBox Margin="3" SelectedValuePath="Content" SelectedValue="{bind:SettingsBinder VisualStyle}" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
-                        <ComboBoxItem>Metro</ComboBoxItem>
-                        <ComboBoxItem>Blend</ComboBoxItem>
-                        <ComboBoxItem>VS2010</ComboBoxItem>
-                        <ComboBoxItem>Office2003</ComboBoxItem>
-                        <ComboBoxItem>Office2007Blue</ComboBoxItem>
-                        <ComboBoxItem>Office2007Black</ComboBoxItem>
-                        <ComboBoxItem>Office2007Silver</ComboBoxItem>
-                        <ComboBoxItem>Office2010Blue</ComboBoxItem>
-                        <ComboBoxItem>Office2010Black</ComboBoxItem>
-                        <ComboBoxItem>Office2010Silver</ComboBoxItem>
-                        <ComboBoxItem>ShinyRed</ComboBoxItem>
-                        <ComboBoxItem>ShinyBlue</ComboBoxItem>
-                        <ComboBoxItem>SyncOrange</ComboBoxItem>
-                        <ComboBoxItem>Transparent</ComboBoxItem>
-                        <ComboBoxItem>None</ComboBoxItem>
+                        <ComboBoxItem Content="Metro" />
+                        <ComboBoxItem Content="Blend" />
+                        <ComboBoxItem Content="VS2010" />
+                        <ComboBoxItem Content="Office2003" />
+                        <ComboBoxItem Content="Office2007Blue" />
+                        <ComboBoxItem Content="Office2007Black" />
+                        <ComboBoxItem Content="Office2007Silver" />
+                        <ComboBoxItem Content="Office2010Blue" />
+                        <ComboBoxItem Content="Office2010Black" />
+                        <ComboBoxItem Content="Office2010Silver" />
+                        <ComboBoxItem Content="ShinyRed" />
+                        <ComboBoxItem Content="ShinyBlue" />
+                        <ComboBoxItem Content="SyncOrange" />
+                        <ComboBoxItem Content="Transparent" />
+                        <ComboBoxItem Content="None" />
                     </ComboBox>
-                    
+
                     <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Metro brush:" />
                     <syncfusion:ColorPicker Margin="3" Grid.Row="1" Grid.Column="1" Color="{bind:SettingsBinder MetroColor}" />
-                    
+
                     <Label Margin="3"  Grid.Row="2" Grid.Column="0" Content="Border thickness:" />
-                    <syncfusion:IntegerTextBox Margin="3" Grid.Row="2" Grid.Column="1" MinValue="0" ValueChanged="BorderThickness_OnValueChanged" Value="{bind:SettingsBinder BorderThickness}" />
-                    
+                    <Slider Margin="3" Grid.Row="2" Grid.Column="1" Minimum="0" ValueChanged="SldBorderThickness_OnValueChanged" Value="{bind:SettingsBinder BorderThickness}" />
+
                     <Label Margin="3" Grid.Row="3" Grid.Column="0" Content="Window opacity:" />
                     <Slider Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Maximum="100" Width="180" ValueChanged="SldOpacity_OnValueChanged" Value="{bind:SettingsBinder WindowOpacity}" />
-                    
+
                     <Label Margin="3" Grid.Row="4" Grid.Column="0" Content="Resize border:" />
                     <Slider Margin="3" Grid.Row="4" Grid.Column="1" Minimum="2" Maximum="10" Width="180" ValueChanged="SldWindowResize_OnValueChanged" Value="{bind:SettingsBinder WindowResizeBorder}" />
                 </Grid>

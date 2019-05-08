@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PK_Finder.Classes;
-using Syncfusion.Windows.Shared;
 
 namespace PK_Finder.Windows
 {
@@ -155,6 +154,23 @@ namespace PK_Finder.Windows
         }
 
         /// <summary>
+        /// Method that is called when the border thickness should change
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
+        private void SldBorderThickness_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            try
+            {
+                BorderThickness = new Thickness(Properties.Settings.Default.BorderThickness);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advanced PortChecker", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
         /// Method that is called when the Window is closing
         /// </summary>
         /// <param name="sender">The object that called this method</param>
@@ -169,17 +185,6 @@ namespace PK_Finder.Windows
             {
                 MessageBox.Show(ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        /// <summary>
-        /// Method that is called when the BorderThickness should change dynamically
-        /// </summary>
-        /// <param name="d">The DependencyObject</param>
-        /// <param name="e">The DependencyPropertyChangedEventArgs</param>
-        private void BorderThickness_OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            long? value = ((IntegerTextBox) d).Value;
-            if (value != null) BorderThickness = new Thickness(value.Value);
         }
     }
 }
