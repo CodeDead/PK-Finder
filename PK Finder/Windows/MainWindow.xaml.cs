@@ -158,7 +158,7 @@ namespace PK_Finder.Windows
             if (_keyInfo == null) return;
 
             SaveFileDialog sfd = new SaveFileDialog
-                {Filter = "Text file (*.txt)|*.txt|HTML (*.html)|*.html|CSV (*.csv)|*.csv|Excel (*.csv)|*.csv"};
+                {Filter = "Text file (*.txt)|*.txt|HTML (*.html)|*.html|CSV (*.csv)|*.csv|Excel (*.csv)|*.csv|JSON (*.json)|*.json"};
             ExportManager exportManager = new ExportManager(_keyInfo);
 
             if (sfd.ShowDialog() != true) return;
@@ -177,6 +177,9 @@ namespace PK_Finder.Windows
                         break;
                     case 4:
                         exportManager.ExportToExcel(sfd.FileName);
+                        break;
+                    case 5:
+                        exportManager.ExportToJson(sfd.FileName);
                         break;
                 }
 
