@@ -16,61 +16,61 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Menu IsMainMenu="True">
-            <MenuItem Header="File">
-                <MenuItem Header="Refresh" Click="RefreshItem_OnClick">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Refresh" Click="RefreshItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/refresh.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Export" Click="ExportItem_OnClick">
+                <MenuItem Header="_Export" Click="ExportItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/save.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Exit" Click="ExitItem_OnClick">
+                <MenuItem Header="_Exit" Click="ExitItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/exit.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Tools">
-                <MenuItem Header="Settings" Click="SettingsItem_OnClick">
+            <MenuItem Header="_Tools">
+                <MenuItem Header="_Settings" Click="SettingsItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/settings.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Help">
-                <MenuItem Header="Help" Click="HelpItem_OnClick">
+            <MenuItem Header="_Help">
+                <MenuItem Header="_Help" Click="HelpItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/help.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Check for updates" Click="UpdateItem_OnClick">
+                <MenuItem Header="_Check for updates" Click="UpdateItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/update.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Homepage" Click="HomePageItem_OnClick">
+                <MenuItem Header="_Homepage" Click="HomePageItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/home.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="License" Click="LicenseItem_OnClick">
+                <MenuItem Header="_License" Click="LicenseItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/license.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Donate" Click="DonateItem_OnClick">
+                <MenuItem Header="_Donate" Click="DonateItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/money.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="About" Click="AboutItem_OnClick">
+                <MenuItem Header="_About" Click="AboutItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/PK Finder;component/Resources/Images/about.png" />
                     </MenuItem.Icon>
