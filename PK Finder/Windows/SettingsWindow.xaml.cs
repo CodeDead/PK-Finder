@@ -127,9 +127,6 @@ namespace PK_Finder.Windows
 
                 LoadTheme();
                 LoadSettings();
-
-                MessageBox.Show(this, "All settings have been saved!", "PK Finder", MessageBoxButton.OK,
-                    MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
