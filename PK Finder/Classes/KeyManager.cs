@@ -21,11 +21,13 @@ namespace PK_Finder.Classes
             RegistryKey openSubKey = key.OpenSubKey(keyPath);
             if (openSubKey == null) return null;
 
-            byte[] digitalProductId = (byte[])openSubKey.GetValue("DigitalProductId");
-            bool isWin8OrUp = Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor >= 2 || Environment.OSVersion.Version.Major > 6;
+            byte[] digitalProductId = (byte[]) openSubKey.GetValue("DigitalProductId");
+            bool isWin8OrUp = Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor >= 2 ||
+                              Environment.OSVersion.Version.Major > 6;
 
-            string productKey = isWin8OrUp ? DecodeProductKeyWin8AndUp(digitalProductId) : DecodeProductKey(digitalProductId);
-            string productName = (string)openSubKey.GetValue("ProductName");
+            string productKey =
+                isWin8OrUp ? DecodeProductKeyWin8AndUp(digitalProductId) : DecodeProductKey(digitalProductId);
+            string productName = (string) openSubKey.GetValue("ProductName");
 
             KeyInfo ki = new KeyInfo();
 
@@ -44,8 +46,8 @@ namespace PK_Finder.Classes
         {
             string key = string.Empty;
             const int keyOffset = 52;
-            byte isWin8 = (byte)((digitalProductId[66] / 6) & 1);
-            digitalProductId[66] = (byte)((digitalProductId[66] & 0xf7) | (isWin8 & 2) * 4);
+            byte isWin8 = (byte) ((digitalProductId[66] / 6) & 1);
+            digitalProductId[66] = (byte) ((digitalProductId[66] & 0xf7) | (isWin8 & 2) * 4);
 
             const string digits = "BCDFGHJKMPQRTVWXY2346789";
             const string insert = "N";
@@ -58,12 +60,14 @@ namespace PK_Finder.Classes
                 {
                     current = current * 256;
                     current = digitalProductId[j + keyOffset] + current;
-                    digitalProductId[j + keyOffset] = (byte)(current / 24);
+                    digitalProductId[j + keyOffset] = (byte) (current / 24);
                     current = current % 24;
                     last = current;
                 }
+
                 key = digits[current] + key;
             }
+
             string keyPart = key.Substring(1, last);
             key = key.Substring(1).Replace(keyPart, keyPart + insert);
             if (last == 0) key = insert + key;
@@ -71,6 +75,7 @@ namespace PK_Finder.Classes
             {
                 key = key.Insert(i, "-");
             }
+
             return key;
         }
 
@@ -83,7 +88,11 @@ namespace PK_Finder.Classes
         {
             const int keyStartIndex = 52;
             const int keyEndIndex = keyStartIndex + 15;
-            char[] digits = { 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'R', 'T', 'V', 'W', 'X', 'Y', '2', '3', '4', '6', '7', '8', '9' };
+            char[] digits =
+            {
+                'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'P', 'Q', 'R', 'T', 'V', 'W', 'X', 'Y', '2', '3', '4', '6',
+                '7', '8', '9'
+            };
             const int decodeLength = 29;
             const int decodeStringLength = 15;
             char[] decodedChars = new char[decodeLength];
@@ -92,6 +101,7 @@ namespace PK_Finder.Classes
             {
                 hexPid.Add(digitalProductId[i]);
             }
+
             for (int i = decodeLength - 1; i >= 0; i--)
             {
                 if ((i + 1) % 6 == 0)
@@ -103,13 +113,14 @@ namespace PK_Finder.Classes
                     int digitMapIndex = 0;
                     for (int j = decodeStringLength - 1; j >= 0; j--)
                     {
-                        int byteValue = (digitMapIndex << 8) | (byte)hexPid[j];
-                        hexPid[j] = (byte)(byteValue / 24);
+                        int byteValue = (digitMapIndex << 8) | (byte) hexPid[j];
+                        hexPid[j] = (byte) (byteValue / 24);
                         digitMapIndex = byteValue % 24;
                         decodedChars[i] = digits[digitMapIndex];
                     }
                 }
             }
+
             return new string(decodedChars);
         }
     }

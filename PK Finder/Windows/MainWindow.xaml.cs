@@ -16,14 +16,17 @@ namespace PK_Finder.Windows
     public partial class MainWindow
     {
         #region Variables
+
         /// <summary>
         /// The KeyInfo object containing the relevant product information
         /// </summary>
         private KeyInfo _keyInfo;
+
         /// <summary>
         /// The UpdateManager which can check for application updates
         /// </summary>
         private readonly UpdateManager _updateManager;
+
         #endregion
 
         /// <inheritdoc />
@@ -43,7 +46,8 @@ namespace PK_Finder.Windows
                 TitleText = "PK Finder",
                 UpdateNowText = "Would you like to update the application now?"
             };
-            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/PK%20Finder/update.xml", stringVariables);
+            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version,
+                "https://codedead.com/Software/PK%20Finder/update.json", stringVariables, DataType.Json);
 
             LoadTheme();
             WindowDraggable();
@@ -119,7 +123,9 @@ namespace PK_Finder.Windows
 
                 if (_keyInfo == null)
                 {
-                    MessageBox.Show("Unable to retrieve product key! Your registry might be corrupt or your version of Windows is not activated.", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(
+                        "Unable to retrieve product key! Your registry might be corrupt or your version of Windows is not activated.",
+                        "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -151,7 +157,8 @@ namespace PK_Finder.Windows
         {
             if (_keyInfo == null) return;
 
-            SaveFileDialog sfd = new SaveFileDialog { Filter = "Text file (*.txt)|*.txt|HTML (*.html)|*.html|CSV (*.csv)|*.csv|Excel (*.csv)|*.csv" };
+            SaveFileDialog sfd = new SaveFileDialog
+                {Filter = "Text file (*.txt)|*.txt|HTML (*.html)|*.html|CSV (*.csv)|*.csv|Excel (*.csv)|*.csv"};
             ExportManager exportManager = new ExportManager(_keyInfo);
 
             if (sfd.ShowDialog() != true) return;
@@ -172,6 +179,7 @@ namespace PK_Finder.Windows
                         exportManager.ExportToExcel(sfd.FileName);
                         break;
                 }
+
                 MessageBox.Show("Key exported!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
@@ -329,7 +337,8 @@ namespace PK_Finder.Windows
 
                 if (Properties.Settings.Default.CopyMessage)
                 {
-                    MessageBox.Show("Product key has been copied to the clipboard!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Product key has been copied to the clipboard!", "PK Finder", MessageBoxButton.OK,
+                        MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)

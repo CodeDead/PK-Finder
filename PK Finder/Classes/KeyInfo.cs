@@ -6,14 +6,17 @@
     internal sealed class KeyInfo
     {
         #region Variables
+
         /// <summary>
         /// The product name
         /// </summary>
         private string _productName;
+
         /// <summary>
         /// The product key
         /// </summary>
         private string _productKey;
+
         #endregion
 
         /// <summary>

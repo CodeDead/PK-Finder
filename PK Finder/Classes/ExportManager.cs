@@ -9,10 +9,12 @@ namespace PK_Finder.Classes
     internal sealed class ExportManager
     {
         #region Variables
+
         /// <summary>
         /// The KeyInfo object that can be used by the internal methods for writing information to a storage device
         /// </summary>
         private readonly KeyInfo _keyInfo;
+
         #endregion
 
         /// <summary>
@@ -43,7 +45,8 @@ namespace PK_Finder.Classes
         /// <param name="path">The path where the KeyInfo object can be stored in plain text format</param>
         internal void ExportToTxt(string path)
         {
-            string content = "Product name: " + _keyInfo.GetProductName() + Environment.NewLine + "Product key: " + _keyInfo.GetProductKey();
+            string content = "Product name: " + _keyInfo.GetProductName() + Environment.NewLine + "Product key: " +
+                             _keyInfo.GetProductKey();
             Export(path, content);
         }
 
@@ -72,7 +75,8 @@ namespace PK_Finder.Classes
         /// <param name="delimiter">The delimiter that should be used to split the data</param>
         private void ExportDelimiter(string path, string delimiter)
         {
-            string content = "Product name" + delimiter + "Product key" + Environment.NewLine + _keyInfo.GetProductName() + delimiter + _keyInfo.GetProductKey();
+            string content = "Product name" + delimiter + "Product key" + Environment.NewLine +
+                             _keyInfo.GetProductName() + delimiter + _keyInfo.GetProductKey();
             Export(path, content);
         }
 
@@ -82,7 +86,9 @@ namespace PK_Finder.Classes
         /// <param name="path">The path where the KeyInfo object can be stored in HTML format</param>
         internal void ExportToHtml(string path)
         {
-            string content = "<html><head><title>PK Finder</title></head><body><table border='1'><tr><th>Product name</th><th>Product key</th></tr><tr><td>" + _keyInfo.GetProductName() + "</td><td>" + _keyInfo.GetProductKey() + "</td></tr></table></body></html>";
+            string content =
+                "<html><head><title>PK Finder</title></head><body><table border='1'><tr><th>Product name</th><th>Product key</th></tr><tr><td>" +
+                _keyInfo.GetProductName() + "</td><td>" + _keyInfo.GetProductKey() + "</td></tr></table></body></html>";
             Export(path, content);
         }
     }

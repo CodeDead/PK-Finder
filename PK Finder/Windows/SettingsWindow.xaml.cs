@@ -14,10 +14,12 @@ namespace PK_Finder.Windows
     public partial class SettingsWindow
     {
         #region Variables
+
         /// <summary>
         /// The MainWindow object
         /// </summary>
         private readonly MainWindow _mw;
+
         #endregion
 
         /// <inheritdoc />
@@ -89,7 +91,8 @@ namespace PK_Finder.Windows
         {
             try
             {
-                if (MessageBox.Show(this, "Are you sure that you want to reset all settings?", "PK Finder", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+                if (MessageBox.Show(this, "Are you sure that you want to reset all settings?", "PK Finder",
+                        MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
 
                 Properties.Settings.Default.Reset();
                 Properties.Settings.Default.Save();
@@ -98,7 +101,7 @@ namespace PK_Finder.Windows
 
                 _mw.LoadTheme();
                 _mw.WindowDraggable();
-                
+
                 LoadTheme();
                 LoadSettings();
             }
@@ -125,7 +128,8 @@ namespace PK_Finder.Windows
                 LoadTheme();
                 LoadSettings();
 
-                MessageBox.Show(this, "All settings have been saved!", "PK Finder", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(this, "All settings have been saved!", "PK Finder", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -140,7 +144,7 @@ namespace PK_Finder.Windows
         /// <param name="e">The RoutedPropertyChangedEventArgs</param>
         private void SldOpacity_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Opacity = ((Slider)sender).Value / 100;
+            Opacity = ((Slider) sender).Value / 100;
         }
 
         /// <summary>
@@ -150,7 +154,7 @@ namespace PK_Finder.Windows
         /// <param name="e">The RoutedPropertyChangedEventArgs</param>
         private void SldWindowResize_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            ResizeBorderThickness = new Thickness(((Slider)sender).Value);
+            ResizeBorderThickness = new Thickness(((Slider) sender).Value);
         }
 
         /// <summary>
