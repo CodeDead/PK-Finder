@@ -3,65 +3,27 @@
     /// <summary>
     /// Internal logic for handling Windows product information
     /// </summary>
-    internal sealed class KeyInfo
+    public sealed class KeyInfo
     {
-        #region Variables
+        #region Properties
+        /// <summary>
+        /// Gets or sets the product name
+        /// </summary>
+        public string ProductName { get; set; }
 
         /// <summary>
-        /// The product name
+        /// Gets or sets the product key
         /// </summary>
-        private string _productName;
-
-        /// <summary>
-        /// The product key
-        /// </summary>
-        private string _productKey;
-
+        public string ProductKey { get; set; }
         #endregion
 
         /// <summary>
         /// Initialize a new KeyInfo object
         /// </summary>
-        internal KeyInfo()
+        public KeyInfo()
         {
-            _productKey = "";
-            _productName = "";
-        }
-
-        /// <summary>
-        /// Set the product name
-        /// </summary>
-        /// <param name="name">The name of the product</param>
-        internal void SetProductName(string name)
-        {
-            _productName = name;
-        }
-
-        /// <summary>
-        /// Get the current product name
-        /// </summary>
-        /// <returns>The product name</returns>
-        internal string GetProductName()
-        {
-            return _productName;
-        }
-
-        /// <summary>
-        /// Set the product key
-        /// </summary>
-        /// <param name="key">The product key</param>
-        internal void SetProductKey(string key)
-        {
-            _productKey = key;
-        }
-
-        /// <summary>
-        /// Get the current product key
-        /// </summary>
-        /// <returns>The product key</returns>
-        internal string GetProductKey()
-        {
-            return _productKey;
+            ProductKey = "";
+            ProductName = "";
         }
     }
 }

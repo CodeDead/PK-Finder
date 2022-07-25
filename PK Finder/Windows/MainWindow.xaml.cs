@@ -34,7 +34,7 @@ namespace PK_Finder.Windows
         {
             InitializeComponent();
 
-            _updateManager = new UpdateManager("https://codedead.com/Software/PK%20Finder/update2.json");
+            _updateManager = new UpdateManager("https://codedead.com/Software/PK%20Finder/update.json");
 
             LoadTheme();
             WindowDraggable();
@@ -139,8 +139,8 @@ namespace PK_Finder.Windows
                     return;
                 }
 
-                LblInfo.Content = _keyInfo.GetProductName();
-                TxtProductKey.Text = _keyInfo.GetProductKey();
+                LblInfo.Content = _keyInfo.ProductName;
+                TxtProductKey.Text = _keyInfo.ProductKey;
             }
             catch (Exception ex)
             {

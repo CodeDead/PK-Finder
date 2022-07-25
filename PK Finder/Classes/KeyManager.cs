@@ -30,12 +30,11 @@ namespace PK_Finder.Classes
             string productKey =
                 isWin8OrUp ? DecodeProductKeyWin8AndUp(digitalProductId) : DecodeProductKey(digitalProductId);
 
-            KeyInfo ki = new KeyInfo();
-
-            ki.SetProductKey(productKey);
-            ki.SetProductName(System.Runtime.InteropServices.RuntimeInformation.OSDescription);
-
-            return ki;
+            return new KeyInfo
+            {
+                ProductKey = productKey,
+                ProductName = System.Runtime.InteropServices.RuntimeInformation.OSDescription
+            };
         }
 
         /// <summary>
