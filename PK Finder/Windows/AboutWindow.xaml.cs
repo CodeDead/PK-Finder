@@ -85,7 +85,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start("https://codedead.com/");
+                Process.Start(new ProcessStartInfo("https://codedead.com/") { UseShellExecute = true });
             }
             catch (Exception ex)
             {

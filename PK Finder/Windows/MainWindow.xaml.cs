@@ -34,7 +34,7 @@ namespace PK_Finder.Windows
         {
             InitializeComponent();
 
-            _updateManager = new UpdateManager("https://codedead.com/Software/PK%20Finder/update.json");
+            _updateManager = new UpdateManager("https://codedead.com/Software/PK%20Finder/update2.json");
 
             LoadTheme();
             WindowDraggable();
@@ -65,7 +65,7 @@ namespace PK_Finder.Windows
                 if (MessageBox.Show(this, update.UpdateInfo, "PK Finder", MessageBoxButton.YesNo) ==
                     MessageBoxResult.Yes)
                 {
-                    Process.Start(update.UpdateUrl);
+                    Process.Start(new ProcessStartInfo(update.UpdateUrl) { UseShellExecute = true });
                 }
             }
             else
@@ -275,7 +275,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start("https://codedead.com/");
+                Process.Start(new ProcessStartInfo("https://codedead.com/") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
@@ -319,7 +319,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start("https://codedead.com/?page_id=302");
+                Process.Start(new ProcessStartInfo("https://codedead.com/donate/") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
