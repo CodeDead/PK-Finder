@@ -240,7 +240,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\help.pdf");
+                Process.Start(new ProcessStartInfo(AppDomain.CurrentDomain.BaseDirectory + "help.pdf") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
@@ -292,7 +292,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\gpl.pdf");
+                Process.Start(new ProcessStartInfo(AppDomain.CurrentDomain.BaseDirectory + "license.pdf") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
