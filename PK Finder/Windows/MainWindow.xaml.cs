@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
-using CodeDead.UpdateManager.Classes;
 using Microsoft.Win32;
 using PK_Finder.Classes;
 
@@ -22,11 +20,6 @@ namespace PK_Finder.Windows
         /// </summary>
         private KeyInfo _keyInfo;
 
-        /// <summary>
-        /// The UpdateManager which can check for application updates
-        /// </summary>
-        private readonly UpdateManager _updateManager;
-
         #endregion
 
         /// <inheritdoc />
@@ -37,18 +30,6 @@ namespace PK_Finder.Windows
         {
             InitializeComponent();
 
-            StringVariables stringVariables = new StringVariables
-            {
-                CancelButtonText = "Cancel",
-                DownloadButtonText = "Download",
-                InformationButtonText = "Information",
-                NoNewVersionText = "You are running the latest version!",
-                TitleText = "PK Finder",
-                UpdateNowText = "Would you like to update the application now?"
-            };
-            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version,
-                "https://codedead.com/Software/PK%20Finder/update.json", stringVariables, DataType.Json);
-
             LoadTheme();
             WindowDraggable();
 
@@ -58,7 +39,7 @@ namespace PK_Finder.Windows
             {
                 if (Properties.Settings.Default.AutoUpdate)
                 {
-                    _updateManager.CheckForUpdate(false, false);
+                    // _updateManager.CheckForUpdate(false, false);
                 }
             }
             catch (Exception ex)
@@ -245,7 +226,7 @@ namespace PK_Finder.Windows
         /// <param name="e">The RoutedEventArgs</param>
         private void UpdateItem_OnClick(object sender, RoutedEventArgs e)
         {
-            _updateManager.CheckForUpdate(true, true);
+            // _updateManager.CheckForUpdate(true, true);
         }
 
         /// <summary>

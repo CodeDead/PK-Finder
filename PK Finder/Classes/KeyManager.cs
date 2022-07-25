@@ -19,20 +19,21 @@ namespace PK_Finder.Classes
             RegistryKey key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Default);
             const string keyPath = @"Software\Microsoft\Windows NT\CurrentVersion";
             RegistryKey openSubKey = key.OpenSubKey(keyPath);
-            if (openSubKey == null) return null;
 
-            byte[] digitalProductId = (byte[]) openSubKey.GetValue("DigitalProductId");
+            if (openSubKey == null)
+                return null;
+
+            byte[] digitalProductId = (byte[])openSubKey.GetValue("DigitalProductId");
             bool isWin8OrUp = Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor >= 2 ||
                               Environment.OSVersion.Version.Major > 6;
 
             string productKey =
                 isWin8OrUp ? DecodeProductKeyWin8AndUp(digitalProductId) : DecodeProductKey(digitalProductId);
-            string productName = (string) openSubKey.GetValue("ProductName");
 
             KeyInfo ki = new KeyInfo();
 
             ki.SetProductKey(productKey);
-            ki.SetProductName(productName);
+            ki.SetProductName(System.Runtime.InteropServices.RuntimeInformation.OSDescription);
 
             return ki;
         }
@@ -46,8 +47,8 @@ namespace PK_Finder.Classes
         {
             string key = string.Empty;
             const int keyOffset = 52;
-            byte isWin8 = (byte) ((digitalProductId[66] / 6) & 1);
-            digitalProductId[66] = (byte) ((digitalProductId[66] & 0xf7) | (isWin8 & 2) * 4);
+            byte isWin8 = (byte)((digitalProductId[66] / 6) & 1);
+            digitalProductId[66] = (byte)((digitalProductId[66] & 0xf7) | (isWin8 & 2) * 4);
 
             const string digits = "BCDFGHJKMPQRTVWXY2346789";
             const string insert = "N";
@@ -60,7 +61,7 @@ namespace PK_Finder.Classes
                 {
                     current = current * 256;
                     current = digitalProductId[j + keyOffset] + current;
-                    digitalProductId[j + keyOffset] = (byte) (current / 24);
+                    digitalProductId[j + keyOffset] = (byte)(current / 24);
                     current = current % 24;
                     last = current;
                 }
@@ -113,8 +114,8 @@ namespace PK_Finder.Classes
                     int digitMapIndex = 0;
                     for (int j = decodeStringLength - 1; j >= 0; j--)
                     {
-                        int byteValue = (digitMapIndex << 8) | (byte) hexPid[j];
-                        hexPid[j] = (byte) (byteValue / 24);
+                        int byteValue = (digitMapIndex << 8) | (byte)hexPid[j];
+                        hexPid[j] = (byte)(byteValue / 24);
                         digitMapIndex = byteValue % 24;
                         decodedChars[i] = digits[digitMapIndex];
                     }

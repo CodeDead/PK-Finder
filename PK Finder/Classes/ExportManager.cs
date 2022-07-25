@@ -65,7 +65,7 @@ namespace PK_Finder.Classes
         {
             ExportDelimiter(path, ";");
         }
-        
+
         /// <summary>
         /// Export the KeyInfo object to a storage device in JSON format
         /// </summary>
@@ -94,7 +94,7 @@ namespace PK_Finder.Classes
         /// </summary>
         /// <param name="path">The path where the KeyInfo object should be stored in HTML format</param>
         internal void ExportToHtml(string path)
-        { 
+        {
             string content = "<html><head><meta charset=\"UTF-8\"><title>PK Finder</title></head><body><table border='1'><tbody><tr><th>Product name</th><th>Product key</th></tr><tr><td>" +
                            _keyInfo.GetProductName() + "</td><td>" + _keyInfo.GetProductKey() + "</td></tr></tbody></table></body></html>";
             Export(path, content);

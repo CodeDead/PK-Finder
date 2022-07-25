@@ -3,10 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.SettingsWindow"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+    x:Class="PK_Finder.Windows.SettingsWindow"
     xmlns:bind="clr-namespace:PK_Finder.Classes"
-    mc:Ignorable="d" TitleTextAlignment="Center" AllowsTransparency="True"
-    UseLayoutRounding="True" UseNativeChrome="True"
+    mc:Ignorable="d" TitleTextAlignment="Center"
+    UseLayoutRounding="True"
     Closing="SettingsWindow_OnClosing"
     Title="PK Finder - Settings" Height="300" Width="350" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
     <Grid>
@@ -51,34 +53,36 @@
 
                     <Label Margin="3" Content="Style:" />
                     <ComboBox Margin="3" SelectedValuePath="Content" SelectedValue="{bind:SettingsBinder VisualStyle}" Grid.Row="0" Grid.Column="1" IsReadOnly="True" SelectionChanged="Selector_OnSelectionChanged">
+                        <ComboBoxItem Content="FluentLight" />
+                        <ComboBoxItem Content="FluentDark" />
+                        <ComboBoxItem Content="MaterialLight" />
+                        <ComboBoxItem Content="MaterialDark" />
+                        <ComboBoxItem Content="MaterialLightBlue" />
+                        <ComboBoxItem Content="MaterialDarkBlue" />
+                        <ComboBoxItem Content="Office2019Colorful" />
+                        <ComboBoxItem Content="Office2019Black" />
+                        <ComboBoxItem Content="Office2019White" />
+                        <ComboBoxItem Content="Office2019DarkGray" />
+                        <ComboBoxItem Content="Office2019HighContrast" />
+                        <ComboBoxItem Content="Office2019HighContrastWhite" />
+                        <ComboBoxItem Content="SystemTheme" />
                         <ComboBoxItem Content="Metro" />
+                        <ComboBoxItem Content="Lime" />
+                        <ComboBoxItem Content="Saffron" />
                         <ComboBoxItem Content="Blend" />
-                        <ComboBoxItem Content="VS2010" />
-                        <ComboBoxItem Content="Office2003" />
-                        <ComboBoxItem Content="Office2007Blue" />
-                        <ComboBoxItem Content="Office2007Black" />
-                        <ComboBoxItem Content="Office2007Silver" />
-                        <ComboBoxItem Content="Office2010Blue" />
+                        <ComboBoxItem Content="Office2013White" />
+                        <ComboBoxItem Content="Office2013LightGray" />
+                        <ComboBoxItem Content="Office2013DarkGray" />
+                        <ComboBoxItem Content="VisualStudio2013" />
                         <ComboBoxItem Content="Office2010Black" />
+                        <ComboBoxItem Content="Office2010Blue" />
                         <ComboBoxItem Content="Office2010Silver" />
-                        <ComboBoxItem Content="ShinyRed" />
-                        <ComboBoxItem Content="ShinyBlue" />
-                        <ComboBoxItem Content="SyncOrange" />
-                        <ComboBoxItem Content="Transparent" />
-                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Office365" />
+                        <ComboBoxItem Content="Office2016Colorful" />
+                        <ComboBoxItem Content="Office2016White" />
+                        <ComboBoxItem Content="Office2016DarkGray" />
+                        <ComboBoxItem Content="VisualStudio2015	" />
                     </ComboBox>
-
-                    <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Metro brush:" />
-                    <syncfusion:ColorPicker Margin="3" Grid.Row="1" Grid.Column="1" Color="{bind:SettingsBinder MetroColor}" />
-
-                    <Label Margin="3"  Grid.Row="2" Grid.Column="0" Content="Border thickness:" />
-                    <Slider Margin="3" Grid.Row="2" Grid.Column="1" Minimum="0" ValueChanged="SldBorderThickness_OnValueChanged" Value="{bind:SettingsBinder BorderThickness}" />
-
-                    <Label Margin="3" Grid.Row="3" Grid.Column="0" Content="Window opacity:" />
-                    <Slider Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Maximum="100" Width="180" ValueChanged="SldOpacity_OnValueChanged" Value="{bind:SettingsBinder WindowOpacity}" />
-
-                    <Label Margin="3" Grid.Row="4" Grid.Column="0" Content="Resize border:" />
-                    <Slider Margin="3" Grid.Row="4" Grid.Column="1" Minimum="2" Maximum="10" Width="180" ValueChanged="SldWindowResize_OnValueChanged" Value="{bind:SettingsBinder WindowResizeBorder}" />
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>

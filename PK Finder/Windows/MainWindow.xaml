@@ -5,10 +5,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PK_Finder.Windows.MainWindow"
     mc:Ignorable="d"
-    UseLayoutRounding="True" UseNativeChrome="True"
+    UseLayoutRounding="True"
     Title="PK Finder" Height="200" Width="450"
     TitleTextAlignment="Center"
-    AllowsTransparency="True" WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
+    WindowStartupLocation="CenterScreen" Icon="/PK Finder;component/pkfinder.ico">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -94,7 +94,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label Margin="2" Content="Product key:" />
+                <Label Margin="3" Content="Product key:" />
                 <TextBox Margin="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="TxtProductKey" Grid.Row="0" Grid.Column="1" IsReadOnly="True" MouseDoubleClick="TxtProductKey_MouseDoubleClick"></TextBox>
                 <Button Margin="2" Grid.Column="2" Click="BtnCopy_OnClick">
                     <Button.ToolTip>
