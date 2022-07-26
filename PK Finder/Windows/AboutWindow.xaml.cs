@@ -68,7 +68,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\gpl.pdf");
+                Process.Start(new ProcessStartInfo(AppDomain.CurrentDomain.BaseDirectory + "license.pdf") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start("https://codedead.com/");
+                Process.Start(new ProcessStartInfo("https://codedead.com/") { UseShellExecute = true });
             }
             catch (Exception ex)
             {

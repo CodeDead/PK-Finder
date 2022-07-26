@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
-using CodeDead.UpdateManager.Classes;
 using Microsoft.Win32;
 using PK_Finder.Classes;
 
@@ -16,17 +15,15 @@ namespace PK_Finder.Windows
     public partial class MainWindow
     {
         #region Variables
-
         /// <summary>
         /// The KeyInfo object containing the relevant product information
         /// </summary>
         private KeyInfo _keyInfo;
 
         /// <summary>
-        /// The UpdateManager which can check for application updates
+        /// The UpdateManager that can be used to check for updates
         /// </summary>
         private readonly UpdateManager _updateManager;
-
         #endregion
 
         /// <inheritdoc />
@@ -37,17 +34,7 @@ namespace PK_Finder.Windows
         {
             InitializeComponent();
 
-            StringVariables stringVariables = new StringVariables
-            {
-                CancelButtonText = "Cancel",
-                DownloadButtonText = "Download",
-                InformationButtonText = "Information",
-                NoNewVersionText = "You are running the latest version!",
-                TitleText = "PK Finder",
-                UpdateNowText = "Would you like to update the application now?"
-            };
-            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version,
-                "https://codedead.com/Software/PK%20Finder/update.json", stringVariables, DataType.Json);
+            _updateManager = new UpdateManager("https://codedead.com/Software/PK%20Finder/update.json");
 
             LoadTheme();
             WindowDraggable();
@@ -56,14 +43,37 @@ namespace PK_Finder.Windows
 
             try
             {
-                if (Properties.Settings.Default.AutoUpdate)
-                {
-                    _updateManager.CheckForUpdate(false, false);
-                }
+                if (!Properties.Settings.Default.AutoUpdate) return;
+                Update update = _updateManager.GetUpdate();
+                CheckUpdate(update, false);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Check for application updates
+        /// </summary>
+        /// <param name="update">The Update object</param>
+        /// <param name="showNoUpdates">Display a message if no update is available</param>
+        private void CheckUpdate(Update update, bool showNoUpdates)
+        {
+            if (_updateManager.CheckForUpdate(Assembly.GetExecutingAssembly().GetName().Version, update))
+            {
+                if (MessageBox.Show(this, update.UpdateInfo, "PK Finder", MessageBoxButton.YesNo) ==
+                    MessageBoxResult.Yes)
+                {
+                    Process.Start(new ProcessStartInfo(update.UpdateUrl) { UseShellExecute = true });
+                }
+            }
+            else
+            {
+                if (showNoUpdates)
+                {
+                    MessageBox.Show(this, "You are using the latest version!", "PK Finder", MessageBoxButton.OK);
+                }
             }
         }
 
@@ -129,8 +139,8 @@ namespace PK_Finder.Windows
                     return;
                 }
 
-                LblInfo.Content = _keyInfo.GetProductName();
-                TxtProductKey.Text = _keyInfo.GetProductKey();
+                LblInfo.Content = _keyInfo.ProductName;
+                TxtProductKey.Text = _keyInfo.ProductKey;
             }
             catch (Exception ex)
             {
@@ -158,7 +168,7 @@ namespace PK_Finder.Windows
             if (_keyInfo == null) return;
 
             SaveFileDialog sfd = new SaveFileDialog
-                {Filter = "Text file (*.txt)|*.txt|HTML (*.html)|*.html|CSV (*.csv)|*.csv|Excel (*.csv)|*.csv|JSON (*.json)|*.json"};
+            { Filter = "Text file (*.txt)|*.txt|HTML (*.html)|*.html|CSV (*.csv)|*.csv|Excel (*.csv)|*.csv|JSON (*.json)|*.json" };
             ExportManager exportManager = new ExportManager(_keyInfo);
 
             if (sfd.ShowDialog() != true) return;
@@ -230,7 +240,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\help.pdf");
+                Process.Start(new ProcessStartInfo(AppDomain.CurrentDomain.BaseDirectory + "help.pdf") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
@@ -243,9 +253,17 @@ namespace PK_Finder.Windows
         /// </summary>
         /// <param name="sender">The object that has invoked this method</param>
         /// <param name="e">The RoutedEventArgs</param>
-        private void UpdateItem_OnClick(object sender, RoutedEventArgs e)
+        private async void UpdateItem_OnClick(object sender, RoutedEventArgs e)
         {
-            _updateManager.CheckForUpdate(true, true);
+            try
+            {
+                Update update = await _updateManager.GetUpdateAsync();
+                CheckUpdate(update, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "PK Finder", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
@@ -257,7 +275,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start("https://codedead.com/");
+                Process.Start(new ProcessStartInfo("https://codedead.com/") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
@@ -274,7 +292,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\gpl.pdf");
+                Process.Start(new ProcessStartInfo(AppDomain.CurrentDomain.BaseDirectory + "license.pdf") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
@@ -301,7 +319,7 @@ namespace PK_Finder.Windows
         {
             try
             {
-                Process.Start("https://codedead.com/?page_id=302");
+                Process.Start(new ProcessStartInfo("https://codedead.com/donate/") { UseShellExecute = true });
             }
             catch (Exception ex)
             {

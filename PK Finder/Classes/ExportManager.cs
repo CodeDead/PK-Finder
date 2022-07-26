@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace PK_Finder.Classes
 {
@@ -43,8 +44,8 @@ namespace PK_Finder.Classes
         /// <param name="path">The path where the KeyInfo object should be stored in plain text format</param>
         internal void ExportToTxt(string path)
         {
-            string content = "Product name: " + _keyInfo.GetProductName() + Environment.NewLine + "Product key: " +
-                             _keyInfo.GetProductKey();
+            string content = "Product name: " + _keyInfo.ProductName + Environment.NewLine + "Product key: " +
+                             _keyInfo.ProductKey;
             Export(path, content);
         }
 
@@ -65,16 +66,15 @@ namespace PK_Finder.Classes
         {
             ExportDelimiter(path, ";");
         }
-        
+
         /// <summary>
         /// Export the KeyInfo object to a storage device in JSON format
         /// </summary>
         /// <param name="path">The path where the KeyInfo object should be stored in JSON format</param>
         internal void ExportToJson(string path)
         {
-            string content = "{\"productName\":\"" + _keyInfo.GetProductName() + "\",\"productKey\":\"" +
-                             _keyInfo.GetProductKey() + "\"}";
-            Export(path, content);
+            string output = JsonConvert.SerializeObject(_keyInfo);
+            Export(path, output);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace PK_Finder.Classes
         private void ExportDelimiter(string path, string delimiter)
         {
             string content = "Product name" + delimiter + "Product key" + Environment.NewLine +
-                             _keyInfo.GetProductName() + delimiter + _keyInfo.GetProductKey();
+                             _keyInfo.ProductName + delimiter + _keyInfo.ProductKey;
             Export(path, content);
         }
 
@@ -94,9 +94,9 @@ namespace PK_Finder.Classes
         /// </summary>
         /// <param name="path">The path where the KeyInfo object should be stored in HTML format</param>
         internal void ExportToHtml(string path)
-        { 
+        {
             string content = "<html><head><meta charset=\"UTF-8\"><title>PK Finder</title></head><body><table border='1'><tbody><tr><th>Product name</th><th>Product key</th></tr><tr><td>" +
-                           _keyInfo.GetProductName() + "</td><td>" + _keyInfo.GetProductKey() + "</td></tr></tbody></table></body></html>";
+                           _keyInfo.ProductName + "</td><td>" + _keyInfo.ProductKey + "</td></tr></tbody></table></body></html>";
             Export(path, content);
         }
     }

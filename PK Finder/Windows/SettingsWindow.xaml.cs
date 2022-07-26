@@ -135,43 +135,6 @@ namespace PK_Finder.Windows
         }
 
         /// <summary>
-        /// Method that is called when the opacity should change dynamically
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
-        private void SldOpacity_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            Opacity = ((Slider) sender).Value / 100;
-        }
-
-        /// <summary>
-        /// Method  that is called when the ResizeBorderThickness should change dynamically
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
-        private void SldWindowResize_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            ResizeBorderThickness = new Thickness(((Slider) sender).Value);
-        }
-
-        /// <summary>
-        /// Method that is called when the border thickness should change
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
-        private void SldBorderThickness_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            try
-            {
-                BorderThickness = new Thickness(Properties.Settings.Default.BorderThickness);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Advanced PortChecker", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        /// <summary>
         /// Method that is called when the theme is changed
         /// </summary>
         /// <param name="sender">The object that called this method</param>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Media;
+using Syncfusion.SfSkinManager;
 using Syncfusion.Windows.Shared;
 
 namespace PK_Finder.Classes
@@ -18,13 +18,11 @@ namespace PK_Finder.Classes
         {
             try
             {
-                SkinStorage.SetVisualStyle(o, Properties.Settings.Default.VisualStyle);
-                SkinStorage.SetMetroBrush(o, new SolidColorBrush(Properties.Settings.Default.MetroColor));
-                if (!(o is ChromelessWindow window)) return;
-                window.BorderThickness = new Thickness(Properties.Settings.Default.BorderThickness);
-                window.CornerRadius = new CornerRadius(0, 0, 0, 0);
-                window.Opacity = Properties.Settings.Default.WindowOpacity / 100;
-                window.ResizeBorderThickness = new Thickness(Properties.Settings.Default.WindowResizeBorder);
+                SfSkinManager.ApplyStylesOnApplication = true;
+                Enum.TryParse(Properties.Settings.Default.VisualStyle, out VisualStyles styles);
+
+                SfSkinManager.SetVisualStyle(o, styles);
+                SfSkinManager.SetTheme(o, new Theme(Properties.Settings.Default.VisualStyle));
             }
             catch (Exception ex)
             {
